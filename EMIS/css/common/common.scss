@@ -1,0 +1,60 @@
+/*-------- Reset CSS --------*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+select, input {
+    outline: none;
+    border: none;
+}
+
+html, body {
+    font-family: GoogleSan;
+}
+
+/*-------- Table format --------*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 10px 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table, th, td {
+    border-bottom: 1px solid #bbbbbb; 
+}
+
+/*-------- Font Import --------*/
+
+@font-face {
+    font-family: GoogleSan;
+    src: url("../../content/font/GoogleSans-Regular.ttf");
+}
+
+/*-------- Common color --------*/
+$green: #019160;
+$hdark: #e5e5e5;
+
+/*-------- Common CSS for page layout --------*/
+.right-swapper {
+    float: left;
+    width: calc(100% - 221px);
+    // padding: 0 20px;
+}
+
+/*-------- Common CSS for btn --------*/
+.btn {
+    display: block;
+    border: 1px solid $hdark;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
