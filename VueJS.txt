@@ -1,0 +1,57 @@
+-----------------Vue JS---------------------
+1. Cài đặt
+	- Environment: Nodejs
+	- Installation
+		#Install vue/cli: npm install -g @vue/cli 
+		#Create first vue project: vue create <project's name>
+		#Run project: npm run serve
+	- Other Library
+		+ Sass loader: npm install -D sass-loader@^10 sass
+		
+		
+2. Một số khái niệm
+	# Declarative Rendering (Vue js core): declaratively render data to the DOM using straightforward template syntax:
+		<div id="app">
+		  {{ message }}
+		</div>
+		
+		<script>
+			var app = new Vue({
+			  el: '#app',
+			  data: {
+				message: 'Hello Vue!'
+			  }
+			})
+		</script>
+	# Conditional and looping
+		+ v-if="":
+		+ v-for: displaying a list of items using the data from array:
+			. Syntax: v-for="item in <array>"
+	# Handling User Input
+		+ v-on:click=""
+		+ v-model: two-way binding form input and app state
+			eg: 
+				<div id="app-6">
+				  <p>{{ message }}</p>
+				  <input v-model="message">
+				</div>
+	
+3. Component system in Vue
+	
+
+! Mustaches: dấu {{}}
+4. Template syntax:
+	- v-html: when you want to output real HTML (not recommend can be XSS) -> never use on user-provided content
+		eg: <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+	- v-bind: 
+		. Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive
+			! Not using <div class={{}}></div>
+			Using <div v-bind:class="{}"> or <div v-bind:class="">
+		. Short hand with dynamic argument: 
+			<a :[argument]="url"></a>
+
+
+4.1. Some shorthand:
+	- v-on: @click or @[event]
+	- v-bind: :url or :[argument]
+	
