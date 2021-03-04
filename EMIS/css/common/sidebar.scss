@@ -1,0 +1,48 @@
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #e5e5e5;
+    float: left;
+
+    /*--------------- sidebar top ---------------*/ 
+
+    &__top {
+        height: 60px;
+        background-color: grey;
+    }
+    
+    /*--------------- sidebar main ---------------*/ 
+
+    &__main {
+        $height: 40px;
+        &-list {
+            height: $height;
+            width: 100%;
+            padding-left: 24px;
+            color: rgba(0, 0, 0, 0.8);
+            line-height: $height;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            &-img {
+                margin: auto 0;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+            }
+        }
+        &-list:hover {
+            background-color: #e5e5e5;
+            color: #000;
+        }
+
+        &-list.active {
+            background-color: #019160;
+            color: #fff;
+            i {
+                color: #fff;
+            }
+        }
+    }
+}
