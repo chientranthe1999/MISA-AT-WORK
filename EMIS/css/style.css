@@ -34,6 +34,10 @@ table, th, td {
   border-bottom: 1px solid #bbbbbb;
 }
 
+th {
+  text-align: center;
+}
+
 /*-------- Font Import --------*/
 @font-face {
   font-family: GoogleSan;
@@ -41,7 +45,7 @@ table, th, td {
 }
 
 /*-------- Common color --------*/
-/*-------- Common CSS for page layout --------*/
+/*-------- CSS for page layout --------*/
 .right-swapper {
   float: left;
   width: calc(100% - 221px);
@@ -55,6 +59,35 @@ table, th, td {
   text-align: center;
   padding: 5px;
   cursor: pointer;
+}
+
+/*-------- Format Scroll bar --------*/
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+/*-------- CSS text-align --------*/
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-center {
+  text-align: center;
 }
 
 .sidebar {
@@ -308,8 +341,8 @@ table, th, td {
 
 .content__main {
   height: calc(100vh - 261px);
-  background-color: #019160;
   overflow: auto;
+  position: relative;
 }
 
 .content__bottom {
@@ -369,4 +402,17 @@ table, th, td {
 }
 
 /*------------ Import page ------------*/
+/*------------ Import component ------------*/
+.loader {
+  width: 300px;
+  height: 300px;
+  background-image: url(../../content/icon/loading-icon.gif);
+  background-size: cover;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
