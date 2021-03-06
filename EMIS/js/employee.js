@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 /**
  * Class quản lý các sự kiện cho trang Employee
- * Author: Chiến Nobi (3/5/2021)
+ * @author: Chiến Nobi (3/5/2021)
  */
 
 class EmployeeJS {
@@ -18,7 +18,7 @@ class EmployeeJS {
 
     /**
      * Funtion lấy dữ liệu từ API và bind vào Frontend
-     * Author: Chiến Nobi (5/3/2021)
+     * @author: Chiến Nobi (5/3/2021)
      */
 
     loadData() {
@@ -76,7 +76,7 @@ class EmployeeJS {
 /**
  * Format dữ liệu -> ngày/tháng/năm
  * @param {any} date bất kì dữ liệu gì
- * Author: Chiến Nobi (5/3/2021)
+ * @author: Chiến Nobi (5/3/2021)
  */
 function formatDate(date) {
     let dateObject = new Date(date);
@@ -95,7 +95,7 @@ function formatDate(date) {
 /**
  * Function định dạng hiển thị tiền lương
  * @param {Number} salary số tiền
- * Author: Chiến Nobi (5/3/2021)
+ * @author: Chiến Nobi (5/3/2021)
  */
 
 function formatSalary(salary) {
