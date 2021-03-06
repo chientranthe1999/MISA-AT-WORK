@@ -100,8 +100,10 @@
 
             <!-- Content main -->
             <div class="content__main">
+                <div class="loader"></div>
+                <!-- Table -->
                 <table>
-                    <thead>
+                    <thead class="fixedHeader">
                         <tr>
                             <th fieldname=""></th>
                             <th fieldname="EmployeeCode">Mã nhân viên</th>
@@ -118,19 +120,6 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td fieldname="">01</td>
-                            <td fieldname="EmployeeCode">NV-0100</td>
-                            <td fieldname="FullName">Trần Thế Chiến</td>
-                            <td fieldname="GenderName">Nam</td>
-                            <td fieldname="Email">tranthechien2012@gmail.com</td>
-                            <td fieldname="PhoneNumber">0868547591</td>
-                            <td fieldname="DateOfBirth">01091999</td>
-                            <td fieldname="DepartmentName">Dev</td>
-                            <td fieldname="Salary">15000000</td>
-                            <td fieldname="WorkStatusName">Đang đi làm</td>
-                            <td fieldname="Address" style="max-width: 150px;">Nhà nào đó ở Hà Nội</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -151,13 +140,14 @@
                     <span class="next-page move-btn"><i class="fas fa-angle-right"></i></span>
                     <span class="last-page move-btn"><i class="fas fa-angle-double-right"></i></span>
                 </div>
-                <div class="text-right">10 nhân viên/trang</div>
+                <div class="text-right"><b>10</b> nhân viên/trang</div>
 
             </div>
         </div>
         <!-- End content -->
     </div>
 </body>
-<script src="../js/"></script>
+<script src="../lib/js/jquery.js"></script>
+<script src="../js/employee.js"></script>
 
 </html>

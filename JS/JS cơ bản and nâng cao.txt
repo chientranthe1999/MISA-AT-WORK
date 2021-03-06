@@ -1,0 +1,31 @@
+----------------Javascript----------------
+
+1. Khai báo function
+	- function hello(a, b = 2){ return a + b; }
+	- var a = function () {}
+	- var a = () => {}
+2. Tham số truyền vào cho function
+	- default parameter: function hello(a, b = 2){ return a + b; }
+	- rest parameter: Dùng 1 array để biểu diễn cho số lượng vô hạn các đối số
+		eg: function multiply(multiplier, ...arr) {
+			  return arr.map(x => multiplier * x);
+			}
+
+			var arr = multiply(2, 1, 2, 3);
+			console.log(arr); // [2, 4, 6]
+			
+3. scope và context trong JS
+- scope dựa trên function và context(ngữ cảnh) dựa vào object
+
+-> Variable scope: phạm vi truy cập của biến
+	+ local: truy cập trong 1 function khai báo nó (ES6 sử dụng từ khoá let và const)
+	+ global: được truy cập mọi nơi
+	+ closure: dùng trong nested function: hàm được gọi trong hàm sẽ được sử dụng toàn bộ các biến của hàm khai báo nó (hàm cha)
+
+- This "context"
+	-> this được xác định bằng cách gọi hàm. Khi 1 hàm được gọi như một medthod của object -> this sẽ là object đó
+	
+- ES5 giới thiệu bind -> thao tác vs context. Nó trả về hàm mới gắn vĩnh viễn với tham số đầu tiên của bind()
+	 
+	
+4. Callback, promise, Asyn/Await

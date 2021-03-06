@@ -1,0 +1,5 @@
+class BaseJS {
+    constructor() {
+        
+    }
+}

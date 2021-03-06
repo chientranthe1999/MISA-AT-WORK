@@ -1,0 +1,10 @@
+----------------Jquery----------------
+
+$(document).ready(function(){
+	//code here
+	
+});
+
+- Cấu trúc cơ bản của Jquery 
+	+ $("<selector>").<function>
+	VD: $(".test").hide();

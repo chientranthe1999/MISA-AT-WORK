@@ -135,8 +135,8 @@
 
 .content__main {
   height: calc(100vh - 261px);
-  background-color: #019160;
   overflow: auto;
+  position: relative;
 }
 
 .content__bottom {
