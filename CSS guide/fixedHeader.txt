@@ -1,0 +1,9 @@
+th {
+	position: stickey;
+}
+
+
+-> stickey-containner và stickey-item
+
+- stickey = fix + relative
+	+ Fixed tại 1 vị trí nhưng vẫn chiếm chỗ không gian HTML.
