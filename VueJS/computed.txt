@@ -1,0 +1,6 @@
+- Computed tự như useEffect trong react JS
+
+- Giống như method
+- Khác:
+	+ computed ko cần thêm dấu () -> ko thể nhận tham số đầu vào
+	+ Chỉ được gọi khi tham số gắn vs nó thay đổi (dữ liệu trong data) -> tăng performance
