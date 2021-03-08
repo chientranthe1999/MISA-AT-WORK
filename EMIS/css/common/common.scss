@@ -33,6 +33,14 @@ table, th, td {
 th {
     text-align: center;
 }
+
+.fixed-header th{
+    height: 42px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: -1px;
+    background-color: #fff;
+}
 /*-------- Font Import --------*/
 
 @font-face {

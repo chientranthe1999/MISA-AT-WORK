@@ -1,5 +1,5 @@
 /**
- * Author: Chiến Nobi (5/3/2021)
+ * @author: Chiến Nobi (5/3/2021)
  */
 
 $(document).ready(function () {
@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 /**
  * Class quản lý các sự kiện cho trang Employee
- * Author: Chiến Nobi (3/5/2021)
+ * @author: Chiến Nobi (3/5/2021)
  */
 
 class EmployeeJS {
@@ -18,7 +18,7 @@ class EmployeeJS {
 
     /**
      * Funtion lấy dữ liệu từ API và bind vào Frontend
-     * Author: Chiến Nobi (5/3/2021)
+     * @author: Chiến Nobi (5/3/2021)
      */
 
     loadData() {
@@ -32,6 +32,9 @@ class EmployeeJS {
             $(document).ajaxStart(() => {
                 $(".loader").css("display", "block");
             });
+            var ths = $("th");
+            
+            debugger;
 
             // Lấy dữ liệu từ API và bind vào frontend
             $.ajax({
@@ -64,7 +67,7 @@ class EmployeeJS {
                     });
                 },
                 error: function (error) {
-                    alert(error);
+                    console.log(error);
                 },
             });
         } catch (e) {
@@ -76,7 +79,7 @@ class EmployeeJS {
 /**
  * Format dữ liệu -> ngày/tháng/năm
  * @param {any} date bất kì dữ liệu gì
- * Author: Chiến Nobi (5/3/2021)
+ * @author: Chiến Nobi (5/3/2021)
  */
 function formatDate(date) {
     let dateObject = new Date(date);
@@ -95,7 +98,7 @@ function formatDate(date) {
 /**
  * Function định dạng hiển thị tiền lương
  * @param {Number} salary số tiền
- * Author: Chiến Nobi (5/3/2021)
+ * @author: Chiến Nobi (5/3/2021)
  */
 
 function formatSalary(salary) {
