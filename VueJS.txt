@@ -54,4 +54,5 @@
 4.1. Some shorthand:
 	- v-on: @click or @[event]
 	- v-bind: :url or :[argument]
-	
+
+
