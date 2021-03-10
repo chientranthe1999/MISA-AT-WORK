@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 /**
  * Class quản lý các sự kiện cho trang Employee
- * @author: Chiến Nobi (5/3/2021)
+ * @author: Chiến Nobi (3/5/2021)
  */
 
 class EmployeeJS extends BaseJS {
@@ -17,7 +17,7 @@ class EmployeeJS extends BaseJS {
         this.setGetDataUrl();
     }
     /**
-     * Overide setGetDataUrl()
+     * @override setGetDataUrl()
      */
     setGetDataUrl() {
         this.getDataUrl = "http://api.manhnv.net/api/employees";
