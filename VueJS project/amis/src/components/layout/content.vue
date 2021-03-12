@@ -33,7 +33,7 @@
                 <div class="btn-download btn">
                     <i class="fas fa-download"></i>
                 </div>
-                <div class="btn-reload btn">
+                <div class="btn-reload btn" @click="reload">
                     <i class="fas fa-sync-alt"></i>
                 </div>
             </div>
@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { formatSalary, formatDate } from "../../helper/formatTable";
+import { formatSalary, formatDate } from "../../helper/formatTable.js";
 export default {
     name: "Content",
     data() {
@@ -104,11 +104,13 @@ export default {
         dataBinding: Array,
         rowTitle: Array,
         isLoading: Boolean,
+        reload: Function,
     },
 
     methods: {
         formatSalary,
         formatDate,
+        // reload() {},
     },
 
     // Run when props changed
@@ -124,17 +126,21 @@ export default {
                 ths.forEach((attr) => {
                     fieldname = attr.attributes[1].value;
                     switch (fieldname) {
-                        case "Address":
+                        case "Address": {
                             tds += `<td style="max-width: 150px;">${item[fieldname]}</td>`;
                             break;
-                        case "DateOfBirth":
-                            let phoneNumber = formatDate(item[fieldname]);
+                        }
+                        case "DateOfBirth": {
+                            let phoneNumber = this.formatDate(item[fieldname]);
                             tds += `<td ">${phoneNumber}</td>`;
                             break;
-                        case "Salary":
-                            let salary = formatSalary(item[fieldname]);
+                        }
+
+                        case "Salary": {
+                            let salary = this.formatSalary(item[fieldname]);
                             tds += `<td style="text-align: right;">${salary}</td>`;
                             break;
+                        }
                         default:
                             tds += `<td>${item[fieldname]}</td>`;
                             break;

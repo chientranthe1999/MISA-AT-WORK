@@ -39,7 +39,4 @@ function formatSalary(salary) {
     }
 }
 
-export default {
-    formatSalary,
-    formatDate,
-};
+export { formatSalary, formatDate };

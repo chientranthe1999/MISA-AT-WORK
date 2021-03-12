@@ -7,6 +7,7 @@
                 :dataBinding="this.employeeList"
                 :isLoading="this.isLoading"
                 :rowTitle="this.rowTitle"
+                :reload="this.reload"
             />
         </div>
     </div>
@@ -46,15 +47,27 @@ export default {
 
     // Lấy dữ liệu khi component được tạo thành công
     created() {
-        axios
-            .get("http://api.manhnv.net/api/employees")
-            .then((response) => {
-                this.employeeList = response.data;
-                this.isLoading = false;
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        this.getData();
+    },
+
+    methods: {
+        reload() {
+            this.employeeList = [];
+            this.isLoading = true;
+            this.getData();
+        },
+
+        getData() {
+            axios
+                .get("http://api.manhnv.net/api/employees")
+                .then((response) => {
+                    this.employeeList = response.data;
+                    this.isLoading = false;
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        },
     },
 };
 </script>
