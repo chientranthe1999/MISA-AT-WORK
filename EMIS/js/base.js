@@ -3,6 +3,7 @@ class BaseJS {
         this.getDataUrl;
         this.setGetDataUrl();
         this.loadData();
+        this.initEvent();
     }
 
     /**
@@ -33,12 +34,15 @@ class BaseJS {
                 type: "GET",
                 url: this.getDataUrl,
                 success: function (response) {
-                    var data,
-                        fieldname,
+                    var fieldname,
                         trs = "",
                         tds = "";
                     $.each(response, (index, item) => {
-                        // reset tds
+                        /**
+                         * trs lưu trữ các dòng tr
+                         * tds lưu trữ các td của 1 tr
+                         * Cộng hết các chuỗi với sau đó gán vào bảng
+                         */
                         tds = "";
                         $.each(ths, (key, value) => {
                             fieldname = $(value).attr("fieldname");
@@ -61,6 +65,7 @@ class BaseJS {
                                     break;
                             }
                         });
+                        //Tạo ra các tr
                         trs += `<tr>${tds}</tr>`;
                     });
                     $("table tbody").append(trs);
@@ -68,6 +73,26 @@ class BaseJS {
                 error: function (error) {
                     console.log(error);
                 },
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    /**
+     * Funtion để reload lại dữ liệu gửi về từ api
+     * @author: Chiến Nobi (12/3/2021)
+     */
+
+    initEvent() {
+        try {
+            var me = this;
+            /**
+             * Load lại dữ liệu khi bấm nút reload
+             */
+            $(".btn-reload").click(function () {
+                $("table tbody").html("");
+                me.loadData();
             });
         } catch (e) {
             console.log(e);
