@@ -1,28 +1,115 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <Employee />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Employee from "./page/Employee";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: "App",
+    components: {
+        Employee,
+    },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+/*-------- Reset CSS --------*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+select,
+input {
+    outline: none;
+    border: none;
+}
+
+html,
+body {
+    font-family: GoogleSan;
+}
+
+/*-------- Table format --------*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th,
+td {
+    padding: 10px 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table,
+th,
+td {
+    border-bottom: 1px solid #bbbbbb;
+}
+
+th {
+    text-align: center;
+}
+
+.fixed-header th {
+    height: 42px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: -1px;
+    background-color: #fff;
+}
+/*-------- Font Import --------*/
+
+@font-face {
+    font-family: GoogleSan;
+    src: url("./assets/font/GoogleSans-Regular.ttf");
+}
+
+/*-------- Common color --------*/
+$green: #019160;
+$hdark: #e5e5e5;
+
+/*-------- Common CSS for btn --------*/
+.btn {
+    display: block;
+    border: 1px solid $hdark;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/*-------- Format Scroll bar --------*/
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+/*-------- CSS text-align --------*/
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
 }
 </style>
