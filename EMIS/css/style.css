@@ -327,7 +327,32 @@ th {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 25px; }
+    .employee-popup .popup__content-top .flex-2 > div {
+      margin-bottom: 20px; }
+    .employee-popup .popup__content-top .input-gender .input {
+      margin: 0; }
+    .employee-popup .popup__content-top .input-gender .radio-swapper {
+      height: 40px;
+      line-height: 40px; }
+      .employee-popup .popup__content-top .input-gender .radio-swapper input:nth-child(1) {
+        margin-left: 5px; }
+      .employee-popup .popup__content-top .input-gender .radio-swapper input + span {
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        margin-right: 10px;
+        margin-left: 5px; }
+    .employee-popup .popup__content-middle .input-swaper {
+      margin-bottom: 20px; }
+      .employee-popup .popup__content-middle .input-swaper > .flex-2 {
+        margin-right: 10px; }
   .employee-popup label {
-    display: block; }
-  .employee-popup input[type="text"] {
+    display: block;
+    margin-bottom: 5px; }
+  .employee-popup input[type="text"],
+  .employee-popup input[type="date"] {
     width: 100%; }
+  .employee-popup .input-swaper:nth-child(1) {
+    margin-right: 10px; }
+  .employee-popup input[type="radio"] {
+    transform: scale(1.5); }

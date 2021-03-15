@@ -1,0 +1,38 @@
+.employee-popup {
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+}
+
+.employee-popup .popup__content {
+  height: 570px;
+  background-color: #fff;
+  width: 730px;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 25px;
+}
+
+.employee-popup .popup__content-top .flex-2 > div {
+  margin-bottom: 25px;
+}
+
+.employee-popup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.employee-popup input[type="text"] {
+  width: 100%;
+}
+
+.employee-popup .input-swaper:nth-child(1) {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=popup.css.map */
