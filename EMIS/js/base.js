@@ -36,7 +36,9 @@ class BaseJS {
                 success: function (response) {
                     var fieldname,
                         trs = "",
-                        tds = "";
+                        tds = "",
+                        idProp = Object.keys(response[0])[0];
+
                     $.each(response, (index, item) => {
                         /**
                          * trs lưu trữ các dòng tr
@@ -66,7 +68,7 @@ class BaseJS {
                             }
                         });
                         //Tạo ra các tr
-                        trs += `<tr>${tds}</tr>`;
+                        trs += `<tr data-id="${item[idProp]}">${tds}</tr>`;
                     });
                     $("table tbody").append(trs);
                 },
@@ -98,30 +100,63 @@ class BaseJS {
             /**
              * Đóng modal khi ấn nút close
              */
-            $("#close-modal").click(() => {
+            $("#close-btn").click(() => {
                 $("#employee-popup").hide();
             });
 
             /**
-             * Hiện modal khi nhấn nút thêm nhân viên / thêm khách hàng
+             * Hiện modal thêm khi nhấn nút thêm nhân viên / thêm khách hàng
              */
             $("#show-modal").click(() => {
                 $("#employee-popup").show();
             });
 
             /**
-             *
+             * Lưu lại dữ liệu khi ấn nút save
              */
             $("#save-btn").click(() => {
-                console.log("hihi");
-                this.getDataForm();
+                this.addNewData();
+            });
+
+            /**
+             * hàm click() ko gắn với các element động -> dùng hàm on()
+             * Khi dblclick vào 1 row -> cho phép sửa nội dung của row đó
+             * dblclick -> mở modal -> sử dụng id -> gọi ajax để lấy thông tin nhân viên -> điền vào chỗ trống
+             */
+
+            $("tbody").on("dblclick", "tr", function () {
+                var dataId = $(this).attr("data-id");
+                $.ajax({
+                    // tạo ra đường dẫn
+                    url: me.getDataUrl + "/" + dataId,
+                    method: "GET",
+                    success: (response) => {
+                        debugger;
+                        $("#customerCode").val(response.CustomerCode);
+                        $("#fullName").val(response.FullName);
+                        $("#dateOfBirth").val(response.DateOfBirth);
+                        $("#email").val(response.Email);
+                        $("#phoneNumber").val(response.PhoneNumber);
+                        $('input[name="gender"]').val(response.Gender);
+                        debugger;
+                        $("#customerType").val(response.CustomerType);
+                        $("#employee-popup").show();
+                    },
+                    error: function () {},
+                });
             });
         } catch (e) {
             console.log(e);
         }
     }
 
-    getDataForm() {
+    /**
+     * Hàm tạo ra người dùng mới
+     * @version: 1.0
+     * @author: Chiến Nobi (15/3/2021)
+     */
+
+    addNewData() {
         var me = this;
         var sendForm = {
             CustomerCode: $("#customerCode").val(),
@@ -129,22 +164,23 @@ class BaseJS {
             DateOfBirth: $("#dateOfBirth").val(),
             Email: $("#email").val(),
             PhoneNumber: $("#phoneNumber").val(),
-            // Gender: $('input[name="gender"]').val(),
+            Gender: $('input[name="gender"]').val(),
             CustomerType: $("#customerType").val(),
         };
         this.validateForm(sendForm);
-        debugger;
+
+        /**
+         * Gửi dữ liệu lên server
+         */
         $.ajax({
             type: "POST",
             url: this.getDataUrl,
             data: JSON.stringify(sendForm),
             contentType: "application/json",
-            // xhrFields: {
-            //     withCredentials: true,
-            // },
-            // headers: {
-            //     "Access-Control-Allow-Origin": "*",
-            // },
+            /**
+             * Nhận dữ liệu thành công -> thông báo load dữ liệu thành công
+             * Load lại dữ liệu
+             */
             success: function () {
                 alert("add done");
                 $("#employee-popup").hide();
@@ -155,10 +191,24 @@ class BaseJS {
         });
     }
 
+    /**
+     * Hàm validate dữ liệu của form
+     * @param {*} data dữ liệu đầu vào: là giá trị của ô input
+     * @returns
+     * @author: Chiến Nobi (15/3/2021)
+     */
+
     validateForm(data) {
         if (data.FullName == "") {
             alert("Họ và tên không được để trống");
+            $("#customerCode").focus();
         }
         return true;
     }
+
+    /**
+     * Hàm sửa dữ liệu
+     */
+
+    editData() {}
 }

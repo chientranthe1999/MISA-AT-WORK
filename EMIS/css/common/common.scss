@@ -47,6 +47,11 @@ th {
     text-align: center;
 }
 
+tr:hover {
+    cursor: pointer;
+    background-color: #e5e5e5;
+}
+
 .fixed-header th {
     height: 42px;
     position: sticky;
