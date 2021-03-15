@@ -2,49 +2,73 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 
-select, input {
+select,
+input {
   outline: none;
-  border: none; }
+  border: none;
+}
 
-html, body {
-  font-family: GoogleSan; }
+html,
+body {
+  font-family: GoogleSan;
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: black;
+}
 
 /*-------- Table format --------*/
 table {
   border-collapse: collapse;
-  width: 100%; }
+  width: 100%;
+}
 
-th, td {
+th,
+td {
   padding: 10px 16px;
   text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap; }
+  white-space: nowrap;
+}
 
-table, th, td {
-  border-bottom: 1px solid #bbbbbb; }
+table,
+th,
+td {
+  border-bottom: 1px solid #bbbbbb;
+}
 
 th {
-  text-align: center; }
+  text-align: center;
+}
 
 .fixed-header th {
   height: 42px;
   position: sticky;
   position: -webkit-sticky;
   top: -1px;
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 /*-------- Font Import --------*/
 @font-face {
   font-family: GoogleSan;
-  src: url("../../content/font/GoogleSans-Regular.ttf"); }
+  src: url("../../content/font/GoogleSans-Regular.ttf");
+}
+
 /*-------- Common color --------*/
 /*-------- CSS for page layout --------*/
 .right-swapper {
   float: left;
-  width: calc(100% - 221px); }
+  width: calc(100% - 221px);
+}
 
 /*-------- Common CSS for btn --------*/
 .btn {
@@ -53,29 +77,79 @@ th {
   border-radius: 5px;
   text-align: center;
   padding: 5px;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 /*-------- Format Scroll bar --------*/
 ::-webkit-scrollbar {
-  width: 20px; }
+  width: 20px;
+}
 
 ::-webkit-scrollbar-track {
-  background-color: transparent; }
+  background-color: transparent;
+}
 
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
   border: 6px solid transparent;
-  background-clip: content-box; }
+  background-clip: content-box;
+}
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a8bbbf; }
+  background-color: #a8bbbf;
+}
 
 /*-------- CSS text-align --------*/
 .text-align-right {
-  text-align: right; }
+  text-align: right;
+}
 
 .text-align-center {
-  text-align: center; }
+  text-align: center;
+}
 
+/*-------- Input Common CSS --------*/
+.input {
+  height: 40px;
+  border: 1px solid #bbbbbb;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.input:focus {
+  border-color: #019160;
+  outline: #019160;
+}
+
+/*-------- flex Common class --------*/
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.flex-2 {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.flex-3 {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.d-block {
+  display: block;
+}
 /*# sourceMappingURL=common.css.map */

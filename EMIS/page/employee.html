@@ -81,6 +81,32 @@
                 <div class="user-name">GC hihi</div>
                 <div class="user-action">
                     <i class="fas fa-ellipsis-h"></i>
+                    <<<<<<< HEAD </div>
+                </div>
+            </div>
+            <!-- End header  -->
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Content top -->
+                <div class="content__top">
+                    <h3 class="content__top-header">Quản lý lao động</h3>
+                    <div class="content__top-btn">
+                        <div class="btn-syn btn">Đồng bộ từ HRM</div>
+                        <div class="btn-action btn">
+                            <span><i class="fas fa-user-plus"></i></span>
+                            <span>Thêm lao động</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content middle -->
+                <div class="content__middle">
+                    <div class="content__middle-input">
+                        <input class="search-name input" placeholder="Tìm kiếm theo mã nhân viên, họ tên" />
+                        <input class="search-department input" placeholder="Chọn bộ phận phòng ban" />
+                        <input class="search-status input" placeholder="Trạng thái tham gia bảo hiểm xã hội" />
+                    </div>
+                    =======
                 </div>
             </div>
         </div>
@@ -106,6 +132,7 @@
                     <input class="search-department input" placeholder="Chọn bộ phận phòng ban" />
                     <input class="search-status input" placeholder="Trạng thái tham gia bảo hiểm xã hội" />
                 </div>
+                >>>>>>> 0ced157116692a4cdca514a8e168026eb7635606
 
                 <div class="content__middle-btn">
                     <div class="btn-download btn">
@@ -180,48 +207,74 @@
                 </div>
                 <div class="flex-2">
                     <div class="flex-1 d-flex">
-                        <div class="flex-1 input-swapper">
+                        <div class="flex-1 input-swaper">
                             <label for="customerId">Mã khách hàng</label>
                             <input class="input" type="text" id="customerId" />
                         </div>
-                        <div class="flex-1 input-swapper">
+                        <div class="flex-1 input-swaper">
                             <label for="fullName">Họ và tên</label>
                             <input class="input" type="text" id="fullName" />
                         </div>
                     </div>
 
                     <div class="flex-1 d-flex">
-                        <div class="flex-1 input-swapper">
+                        <div class="flex-1 input-swaper">
                             <label for="numberCode">Mã thẻ thành viên</label>
                             <input class="input" type="text" id="numberCode" />
                         </div>
-                        <div class="flex-1 input-swapper">
-                            <label for="customerType">Loại khách hàng</label>
+                        <div class="flex-1 input-swaper">
+                            <label for="customerType">Nhóm khách hàng</label>
                             <select name="" id="customerType">
                                 <option value="">Khách hàng</option>
                                 <option value="">Khách VIP</option>
                             </select>
                         </div>
                     </div>
-                </div>
 
-                <!-- <input class="input" type="datetime" />
-                    <input class="input" type="radio" value="Nam" />Nam
-                    <input class="input" type="radio" value="Nữ" />Nữ -->
+                    <div class="flex-1 d-flex">
+                        <div class="flex-1 input-swaper">
+                            <label for="customerId">Ngày sinh</label>
+                            <input class="input" type="date" id="DateOfBirth" />
+                        </div>
+                        <div class="flex-1 input-swaper input-gender">
+                            <label for="">Họ và tên</label>
+                            <div class="radio-swapper">
+                                <input class="" type="radio" value="Nam" name="gender" /><span>Nam</span>
+                                <input class="" type="radio" value="Nữ" name="gender" /><span>Nữ</span>
+                                <input class="" type="radio" value="Nữ" name="gender" /><span>Khác</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex-2"></div>
+            <div class="popup__content-middle">
+                <div class="d-flex input-swaper">
+                    <div class="flex-2">
+                        <label for="">Email</label>
+                        <input class="input" type="text" placeholder="example@domain.com" />
+                    </div>
+                    <div class="flex-1">
+                        <label for="">Số điện thoại</label>
+                        <input class="input" type="text" placeholder="" />
+                    </div>
+                </div>
 
-            <div class="popup__content-middel"></div>
+                <div class="d-flex input-swaper">
+                    <div class="flex-2">
+                        <label for="">Tên Công Ty</label>
+                        <input class="input" type="text" placeholder="" />
+                    </div>
+                    <div class="flex-1">
+                        <label for="">Mã số thuế</label>
+                        <input class="input" type="text" placeholder="Mã số thuế" />
+                    </div>
+                </div>
+            </div>
 
-            <div class="popup__content-bottom"></div>
 
-            <input class="input" type="text" placeholder="example@domain.com" />
-            <input class="input" type="text" placeholder="" />
-            <input class="input" type="text" placeholder="" />
-            <input class="input" type="text" placeholder="Mã số thuế công ty" />
             <div class="flex-1">
-                <input class="input" type="text" placeholder="" />
+                <input class="input" type="text" placeholder="Địa chỉ" />
             </div>
         </div>
     </div>
