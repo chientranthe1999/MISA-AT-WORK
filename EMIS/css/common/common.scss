@@ -1,3 +1,4 @@
+$green: #01B075;
 /*-------- Reset CSS --------*/
 * {
     padding: 0;
@@ -110,3 +111,36 @@ $hdark: #e5e5e5;
     text-align: center;
 }
 
+/*-------- display CSS --------*/
+
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+/*-------- Input CSS --------*/
+
+
+.input {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    margin-right: 20px;
+    padding: 0 10px;
+    height: 40px;
+}
+
+
+.input:focus {
+    border-color: $green;
+}

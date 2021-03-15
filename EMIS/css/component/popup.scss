@@ -1,4 +1,5 @@
 .employee-popup {
+    display: none;
     position: absolute;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
@@ -15,12 +16,14 @@
         transform: translate(-50%, -50%);
         padding: 25px;
 
+        /*-------- Popup top CSS --------*/
+        
         &-top {
             .flex-2 > div {
                 margin-bottom: 20px;
             }
             .input-gender {
-                // line-height: 40px;
+                // Overide .input css of common file
                 .input {
                     margin: 0;
                 }
@@ -44,9 +47,9 @@
         }
 
         &-middle {
-            .input-swaper {
+            > div {
                 margin-bottom: 20px;
-                > .flex-2 {
+                > div:nth-child(1) {
                     margin-right: 10px;
                 }
             }

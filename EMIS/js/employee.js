@@ -20,6 +20,6 @@ class EmployeeJS extends BaseJS {
      * @override setGetDataUrl()
      */
     setGetDataUrl() {
-        this.getDataUrl = "http://api.manhnv.net/api/employees";
+        this.getDataUrl = "http://api.manhnv.net/api/customers";
     }
 }

@@ -91,22 +91,12 @@ th {
 .text-align-center {
   text-align: center; }
 
-/*-------- Input Common CSS --------*/
-.input {
-  height: 40px;
-  border: 1px solid #bbbbbb;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-right: 20px; }
-
-.input:focus {
-  border-color: #019160;
-  outline: #019160; }
-
-/*-------- flex Common class --------*/
+/*-------- display CSS --------*/
 .d-flex {
   display: flex; }
+
+.d-block {
+  display: block; }
 
 .flex-1 {
   flex: 1; }
@@ -114,11 +104,16 @@ th {
 .flex-2 {
   flex: 2; }
 
-.flex-3 {
-  flex: 3; }
+/*-------- Input CSS --------*/
+.input {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  margin-right: 20px;
+  padding: 0 10px;
+  height: 40px; }
 
-.d-block {
-  display: block; }
+.input:focus {
+  border-color: #019160; }
 
 .sidebar {
   width: 220px;
@@ -312,6 +307,7 @@ th {
   display: none; }
 
 .employee-popup {
+  display: none;
   position: absolute;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
@@ -342,9 +338,9 @@ th {
         line-height: 40px;
         margin-right: 10px;
         margin-left: 5px; }
-    .employee-popup .popup__content-middle .input-swaper {
+    .employee-popup .popup__content-middle > div {
       margin-bottom: 20px; }
-      .employee-popup .popup__content-middle .input-swaper > .flex-2 {
+      .employee-popup .popup__content-middle > div > div:nth-child(1) {
         margin-right: 10px; }
   .employee-popup label {
     display: block;

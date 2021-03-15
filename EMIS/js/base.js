@@ -94,8 +94,71 @@ class BaseJS {
                 $("table tbody").html("");
                 me.loadData();
             });
+
+            /**
+             * Đóng modal khi ấn nút close
+             */
+            $("#close-modal").click(() => {
+                $("#employee-popup").hide();
+            });
+
+            /**
+             * Hiện modal khi nhấn nút thêm nhân viên / thêm khách hàng
+             */
+            $("#show-modal").click(() => {
+                $("#employee-popup").show();
+            });
+
+            /**
+             *
+             */
+            $("#save-btn").click(() => {
+                console.log("hihi");
+                this.getDataForm();
+            });
         } catch (e) {
             console.log(e);
         }
+    }
+
+    getDataForm() {
+        var me = this;
+        var sendForm = {
+            CustomerCode: $("#customerCode").val(),
+            FullName: $("#fullName").val(),
+            DateOfBirth: $("#dateOfBirth").val(),
+            Email: $("#email").val(),
+            PhoneNumber: $("#phoneNumber").val(),
+            // Gender: $('input[name="gender"]').val(),
+            CustomerType: $("#customerType").val(),
+        };
+        this.validateForm(sendForm);
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: this.getDataUrl,
+            data: JSON.stringify(sendForm),
+            contentType: "application/json",
+            // xhrFields: {
+            //     withCredentials: true,
+            // },
+            // headers: {
+            //     "Access-Control-Allow-Origin": "*",
+            // },
+            success: function () {
+                alert("add done");
+                $("#employee-popup").hide();
+                me.loadData();
+            },
+
+            error: function () {},
+        });
+    }
+
+    validateForm(data) {
+        if (data.FullName == "") {
+            alert("Họ và tên không được để trống");
+        }
+        return true;
     }
 }
