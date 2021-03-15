@@ -1,0 +1,79 @@
+.employee-popup {
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    .popup__content {
+        height: 570px;
+        background-color: #fff;
+        width: 730px;
+        border-radius: 5px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 25px;
+
+        &-top {
+            .flex-2 > div {
+                margin-bottom: 20px;
+            }
+            .input-gender {
+                // line-height: 40px;
+                .input {
+                    margin: 0;
+                }
+                .radio-swapper {
+                    $hw: 40px;
+                    height: $hw;
+                    line-height: $hw;
+                    input:nth-child(1) {
+                        margin-left: 5px;
+                    }
+
+                    input + span {
+                        display: inline-block;
+                        height: $hw;
+                        line-height: $hw;
+                        margin-right: 10px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+
+        &-middle {
+            .input-swaper {
+                margin-bottom: 20px;
+                > .flex-2 {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+        width: 100%;
+    }
+
+    .input-swaper:nth-child(1) {
+        margin-right: 10px;
+    }
+
+    input[type="radio"] {
+        transform: scale(1.5);
+    }
+    // input[type="radio"]:after {
+    //     background-color: #019160;
+    // }
+    // input[type="radio"]:checked:after {
+    //     background-color: #019160;
+    // }
+}

@@ -1,11 +1,12 @@
 /*------------ Import common ------------*/
-@import './common/common.scss';
-@import './common/sidebar.scss';
-@import './common/header.scss';
-@import './common/content.scss';
+@import "./common/common.scss";
+@import "./common/sidebar.scss";
+@import "./common/header.scss";
+@import "./common/content.scss";
 
 /*------------ Import page ------------*/
-@import './page/employee.scss';
+@import "./page/employee.scss";
 
 /*------------ Import component ------------*/
-@import './component/loader.scss';
+@import "./component/loader.scss";
+@import "./component/popup.scss";

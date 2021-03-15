@@ -6,7 +6,8 @@
   position: absolute;
   right: 50%;
   top: 50%;
-  transform: translate(50%, -50%);
-  display: none; }
-
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  display: none;
+}
 /*# sourceMappingURL=loader.css.map */

@@ -1,57 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
 
     <!-- fontawesome -->
-    <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css" />
     <title>MISA</title>
 </head>
+
 <body>
     <!-- Side Bar -->
     <div class="sidebar">
         <!-- Sidebar top  -->
-        <div class="sidebar__top"></div>
+        <div class="sidebar__top">
+            <img src="../content/logo.svg" alt="" />
+        </div>
         <!-- Sidebar main -->
         <div class="sidebar__main">
             <div class="sidebar__main-list">
-                <div class="sidebar__main-list-img"><i class="far fa-file-alt"></i></div>
-                <p class="sidebar__main-list-text">Lập hồ sơ điện tử</p>
+                <div class="sidebar__main-list-img">
+                    <i class="far fa-file-alt"></i>
+                </div>
+                <a href="" class="sidebar__main-list-text">Lập hồ sơ điện tử</a>
             </div>
 
             <div class="sidebar__main-list">
-                <div class="sidebar__main-list-img"><i class="far fa-file-pdf"></i></div>
-                <p class="sidebar__main-list-text">Lập hồ sơ giấy</p>
+                <div class="sidebar__main-list-img">
+                    <i class="far fa-file-pdf"></i>
+                </div>
+                <a href="" class="sidebar__main-list-text">Lập hồ sơ giấy</a>
             </div>
 
             <div class="sidebar__main-list">
-                <div class="sidebar__main-list-img"><i class="fas fa-signal"></i></div>
-                <p class="sidebar__main-list-text">Theo dõi chi</p>
+                <div class="sidebar__main-list-img">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <a href="" class="sidebar__main-list-text">Theo dõi chi</a>
             </div>
 
             <div class="sidebar__main-list">
-                <div class="sidebar__main-list-img"><i class="fas fa-chart-pie"></i></div>
-                <p class="sidebar__main-list-text">Theo dõi đóng</p>
+                <div class="sidebar__main-list-img">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <a href="customer.html" class="sidebar__main-list-text">Quản lý khách hàng</a>
             </div>
 
             <div class="sidebar__main-list active">
-                <div class="sidebar__main-list-img"><i class="fas fa-tasks"></i></div>
-                <p class="sidebar__main-list-text">Quản lý lao động</p>
+                <div class="sidebar__main-list-img">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <a href="employee.html" class="sidebar__main-list-text">Quản lý lao động</a>
             </div>
 
             <div class="sidebar__main-list">
-                <div class="sidebar__main-list-img"><i class="fas fa-cog"></i></div>
+                <div class="sidebar__main-list-img">
+                    <i class="fas fa-cog"></i>
+                </div>
                 <p class="sidebar__main-list-text">Thiết lập</p>
             </div>
         </div>
     </div>
     <!-- End side bar -->
-
-
     <div class="right-swapper">
         <!-- Header -->
         <div class="header">
@@ -59,13 +73,15 @@
                 <select name="company">
                     <option value="">NobiC Corporation</option>
                     <option value="">Apple Corporation</option>
-                    <option value="" selected>GC Corporation</option>
+                    <option value="" selected>Nhà hàng biển đông</option>
                 </select>
             </div>
             <div class="header__right">
                 <div class="user-avt"></div>
                 <div class="user-name">GC hihi</div>
-                <div class="user-action"><i class="fas fa-ellipsis-h"></i></div>
+                <div class="user-action">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
             </div>
         </div>
         <!-- End header  -->
@@ -79,23 +95,26 @@
                     <div class="btn-syn btn">Đồng bộ từ HRM</div>
                     <div class="btn-action btn">
                         <span><i class="fas fa-user-plus"></i></span>
-                        <span>Thêm lao động</span> 
+                        <span>Thêm lao động</span>
                     </div>
                 </div>
             </div>
             <!-- Content middle -->
             <div class="content__middle">
                 <div class="content__middle-input">
-                    <input class="search-name search-bar" placeholder="Tìm kiếm theo mã nhân viên, họ tên"/> 
-                    <input class="search-department search-bar" placeholder="Chọn bộ phận phòng ban" />
-                    <input class="search-status search-bar" placeholder="Trạng thái tham gia bảo hiểm xã hội" />
+                    <input class="search-name input" placeholder="Tìm kiếm theo mã nhân viên, họ tên" />
+                    <input class="search-department input" placeholder="Chọn bộ phận phòng ban" />
+                    <input class="search-status input" placeholder="Trạng thái tham gia bảo hiểm xã hội" />
                 </div>
 
                 <div class="content__middle-btn">
-                    <div class="btn-download btn"><i class="fas fa-download"></i></div>
-                    <div class="btn-reload btn"><i class="fas fa-sync-alt"></i></div>
+                    <div class="btn-download btn">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="btn-reload btn">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
                 </div>
-
             </div>
 
             <!-- Content main -->
@@ -111,20 +130,23 @@
                             <th fieldname="Email">Email</th>
                             <th fieldname="PhoneNumber">Số điện thoại</th>
                             <th fieldname="DateOfBirth">Ngày sinh</th>
-                            <th fieldname="DepartmentName">Bộ phận/Phòng ban</th>
+                            <th fieldname="DepartmentName">
+                                Bộ phận/Phòng ban
+                            </th>
                             <th fieldname="Salary">Hệ số/Mức lương</th>
                             <th fieldname="WorkStatusName">Trạng thái</th>
                             <th fieldname="Address">Địa chỉ</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
             <!-- Content bottom -->
             <div class="content__bottom">
-                <div class="text-left">Hiển thị <b>1-10/1000</b> nhân viên</div>
+                <div class="text-left">
+                    Hiển thị <b>1-10/1000</b> nhân viên
+                </div>
                 <div class="pagination-bar">
                     <span class="first-page move-btn"><i class="fas fa-angle-double-left"></i></span>
                     <span class="pre-page move-btn"><i class="fas fa-angle-left"></i></span>
@@ -140,16 +162,100 @@
                     <span class="last-page move-btn"><i class="fas fa-angle-double-right"></i></span>
                 </div>
                 <div class="text-right"><b>10</b> nhân viên/trang</div>
-
             </div>
         </div>
         <!-- End content -->
+    </div>
+
+    <!-- Add employee popup -->
+    <div class="employee-popup" id="popup">
+        <div class="popup__content">
+            <i class="fas fa-times"></i>
+            <p class="popup-title">Thông tin khách hàng</p>
+
+            <div class="popup__content-top d-flex">
+                <div class="customer-avt flex-1">
+                    <img src="" alt="" />
+                    <p>Thêm ảnh ở đây nheeee....</p>
+                </div>
+                <div class="flex-2">
+                    <div class="flex-1 d-flex">
+                        <div class="flex-1 input-swaper">
+                            <label for="customerId">Mã khách hàng</label>
+                            <input class="input" type="text" id="customerId" />
+                        </div>
+                        <div class="flex-1 input-swaper">
+                            <label for="fullName">Họ và tên</label>
+                            <input class="input" type="text" id="fullName" />
+                        </div>
+                    </div>
+
+                    <div class="flex-1 d-flex">
+                        <div class="flex-1 input-swaper">
+                            <label for="numberCode">Mã thẻ thành viên</label>
+                            <input class="input" type="text" id="numberCode" />
+                        </div>
+                        <div class="flex-1 input-swaper">
+                            <label for="customerType">Nhóm khách hàng</label>
+                            <select name="" id="customerType">
+                                <option value="">Khách hàng</option>
+                                <option value="">Khách VIP</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 d-flex">
+                        <div class="flex-1 input-swaper">
+                            <label for="customerId">Ngày sinh</label>
+                            <input class="input" type="date" id="DateOfBirth" />
+                        </div>
+                        <div class="flex-1 input-swaper input-gender">
+                            <label for="">Họ và tên</label>
+                            <div class="radio-swapper">
+                                <input class="" type="radio" value="Nam" name="gender" /><span>Nam</span>
+                                <input class="" type="radio" value="Nữ" name="gender" /><span>Nữ</span>
+                                <input class="" type="radio" value="Nữ" name="gender" /><span>Khác</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup__content-middle">
+                <div class="d-flex input-swaper">
+                    <div class="flex-2">
+                        <label for="">Email</label>
+                        <input class="input" type="text" placeholder="example@domain.com" />
+                    </div>
+                    <div class="flex-1">
+                        <label for="">Số điện thoại</label>
+                        <input class="input" type="text" placeholder="" />
+                    </div>
+                </div>
+
+                <div class="d-flex input-swaper">
+                    <div class="flex-2">
+                        <label for="">Tên Công Ty</label>
+                        <input class="input" type="text" placeholder="" />
+                    </div>
+                    <div class="flex-1">
+                        <label for="">Mã số thuế</label>
+                        <input class="input" type="text" placeholder="Mã số thuế" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex-1">
+                <input class="input" type="text" placeholder="Địa chỉ" />
+            </div>
+        </div>
     </div>
 </body>
 <script src="../lib/js/jquery.js"></script>
 <script src="../js/common.js"></script>
 <script src="../js/base.js"></script>
 <script src="../js/employee.js"></script>
-<script src="../js/custommer.js"></script>
+<script src="../js/customer.js"></script>
 
 </html>
