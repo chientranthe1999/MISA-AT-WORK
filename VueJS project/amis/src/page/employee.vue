@@ -7,7 +7,6 @@
                 :dataBinding="this.employeeList"
                 :isLoading="this.isLoading"
                 :rowTitle="this.rowTitle"
-                :reload="this.reload"
             />
         </div>
     </div>
@@ -51,11 +50,11 @@ export default {
     },
 
     methods: {
-        reload() {
-            this.employeeList = [];
-            this.isLoading = true;
-            this.getData();
-        },
+        // reload() {
+        //     this.employeeList = [];
+        //     this.isLoading = true;
+        //     this.getData();
+        // },
 
         getData() {
             axios

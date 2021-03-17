@@ -125,22 +125,42 @@
         }
     }
 
-    #cancel-btn {
+    #cancel-btn, #delete-btn {
         height: 40px;
         line-height: 40px;
-        padding: 0 10px;
+        padding: 0 20px;
         margin-left: auto;
-        margin-right: 24px;
+        margin-right: 16px;
+    }
+    #cancel-btn:hover {
+        background-color: #bbb;
+    }
+
+    #delete-btn {
+        background-color: #F65454;
+        margin-left: 0;
+        color: #fff;
+        display: none;
     }
 
     #close-btn {
-        position: absolute;
-        top: 5px;
-        right: 10px;
+        $hw: 30px;
+        height: $hw;
+        width: $hw;
+        line-height: $hw;
+        text-align: center;
         font-size: 20px;
+        border-radius: 4px;
         cursor: pointer;
-        padding: 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
+
+    #close-btn:hover {
+        background-color: #e5e5e5;
+    }
+
 
     
     /*-------- Select tag CSS --------*/

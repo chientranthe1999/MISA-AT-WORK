@@ -117,4 +117,7 @@ tr:hover {
 .input:focus {
   border-color: #019160; }
 
+.input.error:focus {
+  border-color: #FF4747; }
+
 /*# sourceMappingURL=common.css.map */

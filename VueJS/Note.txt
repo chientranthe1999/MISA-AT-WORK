@@ -12,3 +12,6 @@ data() {
 }
 
 - Các global method
+
+15/3/2021
+- click() của jquery ko tương tác đượng vs các element động (được sinh ra bởi js hoặc cái gì đó)

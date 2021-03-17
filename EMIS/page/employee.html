@@ -200,7 +200,7 @@
                         <div class="flex-1 input-swaper">
                             <label for="customerType">Nhóm khách hàng (<span>*</span>)</label>
                             <select name="" id="customerType">
-                                <option value="Khách thường">Khách hàng</option>
+                                <option value="Nhóm khách hàng MISA">Nhóm khách hàng MISA</option>
                                 <option value="Khách vip">Khách VIP</option>
                             </select>
                         </div>
@@ -214,9 +214,9 @@
                         <div class="flex-1 input-swaper input-gender">
                             <label for="">Giới tính (<span>*</span>)</label>
                             <div class="radio-swapper">
-                                <input class="" type="radio" value="0" name="gender" checked /><span>Nam</span>
-                                <input class="" type="radio" value="1" name="gender" /><span>Nữ</span>
-                                <input class="" type="radio" value="2" name="gender" /><span>Khác</span>
+                                <input class="" type="radio" value="1" name="gender" /><span>Nam</span>
+                                <input class="" type="radio" value="0" name="gender" checked /><span>Nữ</span>
+                                <input class="" type="radio" value="3" name="gender" /><span>Khác</span>
                             </div>
                         </div>
                     </div>
@@ -252,7 +252,9 @@
             <!-- Popup bottom -->
             <div class="popup__content-bottom d-flex">
                 <div id="cancel-btn" class="btn">Hủy</div>
-                <div id="save-btn" class="btn d-flex"><span><i class="far fa-save"></i></span> Save</div>
+                <div id="delete-btn" class="btn" data-id="">Xóa</div>
+                <div id="save-btn" class="btn d-flex" data-id=""><span><i class="far fa-save"></i></span> Save
+                </div>
             </div>
         </div>
     </div>

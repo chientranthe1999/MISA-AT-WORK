@@ -143,6 +143,10 @@ tr:hover {
   border-color: #019160;
 }
 
+.input.error:focus {
+  border-color: #FF4747;
+}
+
 .sidebar {
   width: 220px;
   height: 100vh;
@@ -487,20 +491,36 @@ tr:hover {
 .employee-popup #save-btn > span {
   margin-right: 5px;
 }
-.employee-popup #cancel-btn {
+.employee-popup #cancel-btn, .employee-popup #delete-btn {
   height: 40px;
   line-height: 40px;
-  padding: 0 10px;
+  padding: 0 20px;
   margin-left: auto;
-  margin-right: 24px;
+  margin-right: 16px;
+}
+.employee-popup #cancel-btn:hover {
+  background-color: #bbb;
+}
+.employee-popup #delete-btn {
+  background-color: #F65454;
+  margin-left: 0;
+  color: #fff;
+  display: none;
 }
 .employee-popup #close-btn {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
   font-size: 20px;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.employee-popup #close-btn:hover {
+  background-color: #e5e5e5;
 }
 .employee-popup #customerType {
   width: 100%;

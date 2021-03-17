@@ -38,3 +38,19 @@ function formatSalary(salary) {
         console.log(e);
     }
 }
+
+/**
+ * Hàm validate dữ liệu của form
+ * @param {*} data dữ liệu đầu vào: là giá trị của ô input có các trường như sau: FullName, Email, PhoneNumber, FullName
+ * @version: 1.1
+ * @author: Chiến Nobi (17/3/2021)
+ */
+
+function validateForm(data) {
+    if (data.FullName == "") {
+        alert("Họ và tên không được để trống");
+        $("#customerCode").addClass("error");
+        $("#customerCode").focus();
+    }
+    return true;
+}
