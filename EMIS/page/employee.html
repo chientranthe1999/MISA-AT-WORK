@@ -167,97 +167,97 @@
             </div>
         </div>
         <!-- End content -->
-    </div>
-
-    <!-- Add employee popup -->
-    <div class="employee-popup" id="employee-popup">
-        <div class="popup__content">
-            <div id="close-btn"><i class="fas fa-times"></i></div>
-            <h3 class="popup__title">Thông tin khách hàng</h3>
-            <!-- Popup top -->
-            <div class="popup__content-top d-flex">
-                <div class="customer-avt flex-1">
-                    <div></div>
-                    <p>Thêm ảnh ở đây nheeee....</p>
-                </div>
-                <div class="flex-2">
-                    <div class="flex-1 d-flex">
-                        <div class="flex-1 input-swaper">
-                            <label for="customerCode">Mã khách hàng (<span>*</span>)</label>
-                            <input class="input" type="text" id="customerCode" />
-                        </div>
-                        <div class="flex-1 input-swaper">
-                            <label for="fullName">Họ và tên (<span>*</span>)</label>
-                            <input class="input" type="text" id="fullName" />
-                        </div>
+        <!-- Add employee popup -->
+        <div class="employee-popup" id="employee-popup">
+            <div class="popup__content">
+                <div id="close-btn"><i class="fas fa-times"></i></div>
+                <h3 class="popup__title">Thông tin khách hàng</h3>
+                <!-- Popup top -->
+                <div class="popup__content-top d-flex">
+                    <div class="customer-avt flex-1">
+                        <div></div>
+                        <p>Thêm ảnh ở đây nheeee....</p>
                     </div>
+                    <div class="flex-2">
+                        <div class="flex-1 d-flex">
+                            <div class="flex-1 input-swaper">
+                                <label for="customerCode">Mã khách hàng (<span>*</span>)</label>
+                                <input class="input" type="text" id="customerCode" />
+                            </div>
+                            <div class="flex-1 input-swaper">
+                                <label for="fullName">Họ và tên (<span>*</span>)</label>
+                                <input class="input" type="text" id="fullName" />
+                            </div>
+                        </div>
 
-                    <div class="flex-1 d-flex">
-                        <div class="flex-1 input-swaper">
-                            <label for="numberCode">Mã thẻ thành viên (<span>*</span>)</label>
-                            <input class="input" type="text" id="numberCode" />
+                        <div class="flex-1 d-flex">
+                            <div class="flex-1 input-swaper">
+                                <label for="numberCode">Mã thẻ thành viên (<span>*</span>)</label>
+                                <input class="input" type="text" id="numberCode" />
+                            </div>
+                            <div class="flex-1 input-swaper">
+                                <label for="customerType">Nhóm khách hàng (<span>*</span>)</label>
+                                <select name="" id="customerType">
+                                    <option value="Nhóm khách hàng MISA">Nhóm khách hàng MISA</option>
+                                    <option value="Khách vip">Khách VIP</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="flex-1 input-swaper">
-                            <label for="customerType">Nhóm khách hàng (<span>*</span>)</label>
-                            <select name="" id="customerType">
-                                <option value="Nhóm khách hàng MISA">Nhóm khách hàng MISA</option>
-                                <option value="Khách vip">Khách VIP</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="flex-1 d-flex">
-                        <div class="flex-1 input-swaper">
-                            <label for="dateOfBirth">Ngày sinh</label>
-                            <input class="input" type="date" id="dateOfBirth" />
-                        </div>
-                        <div class="flex-1 input-swaper input-gender">
-                            <label for="">Giới tính (<span>*</span>)</label>
-                            <div class="radio-swapper">
-                                <input class="" type="radio" value="1" name="gender" /><span>Nam</span>
-                                <input class="" type="radio" value="0" name="gender" checked /><span>Nữ</span>
-                                <input class="" type="radio" value="3" name="gender" /><span>Khác</span>
+                        <div class="flex-1 d-flex">
+                            <div class="flex-1 input-swaper">
+                                <label for="dateOfBirth">Ngày sinh</label>
+                                <input class="input" type="date" id="dateOfBirth" />
+                            </div>
+                            <div class="flex-1 input-swaper input-gender">
+                                <label for="">Giới tính (<span>*</span>)</label>
+                                <div class="radio-swapper">
+                                    <input class="" type="radio" value="1" name="gender" /><span>Nam</span>
+                                    <input class="" type="radio" value="0" name="gender" checked /><span>Nữ</span>
+                                    <input class="" type="radio" value="3" name="gender" /><span>Khác</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Popup middle -->
-            <div class="popup__content-middle">
-                <div class="d-flex">
-                    <div class="flex-2">
-                        <label for="email">Email (<span>*</span>)</label>
-                        <input class="input" type="text" placeholder="example@domain.com" id="email" />
+                <!-- Popup middle -->
+                <div class="popup__content-middle">
+                    <div class="d-flex">
+                        <div class="flex-2">
+                            <label for="email">Email (<span>*</span>)</label>
+                            <input class="input" type="text" placeholder="example@domain.com" id="email" />
+                        </div>
+                        <div class="flex-1">
+                            <label for="">Số điện thoại (<span>*</span>)</label>
+                            <input class="input" type="text" placeholder="" id="phoneNumber" />
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="flex-2">
+                            <label for="">Tên Công Ty</label>
+                            <input class="input" type="text" placeholder="" />
+                        </div>
+                        <div class="flex-1">
+                            <label for="">Mã số thuế</label>
+                            <input class="input" type="text" placeholder="Mã số thuế" />
+                        </div>
                     </div>
                     <div class="flex-1">
-                        <label for="">Số điện thoại (<span>*</span>)</label>
-                        <input class="input" type="text" placeholder="" id="phoneNumber" />
+                        <label for="">Địa chỉ</label>
+                        <input class="input" type="text" placeholder="Địa chỉ" />
                     </div>
                 </div>
-                <div class="d-flex">
-                    <div class="flex-2">
-                        <label for="">Tên Công Ty</label>
-                        <input class="input" type="text" placeholder="" />
+                <!-- Popup bottom -->
+                <div class="popup__content-bottom d-flex">
+                    <div id="cancel-btn" class="btn">Hủy</div>
+                    <div id="delete-btn" class="btn" data-id="">Xóa</div>
+                    <div id="save-btn" class="btn d-flex" data-id=""><span><i class="far fa-save"></i></span> Save
                     </div>
-                    <div class="flex-1">
-                        <label for="">Mã số thuế</label>
-                        <input class="input" type="text" placeholder="Mã số thuế" />
-                    </div>
-                </div>
-                <div class="flex-1">
-                    <label for="">Địa chỉ</label>
-                    <input class="input" type="text" placeholder="Địa chỉ" />
-                </div>
-            </div>
-            <!-- Popup bottom -->
-            <div class="popup__content-bottom d-flex">
-                <div id="cancel-btn" class="btn">Hủy</div>
-                <div id="delete-btn" class="btn" data-id="">Xóa</div>
-                <div id="save-btn" class="btn d-flex" data-id=""><span><i class="far fa-save"></i></span> Save
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 <script src="../lib/js/jquery.js"></script>
 <script src="../js/common.js"></script>

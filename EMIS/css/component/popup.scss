@@ -1,6 +1,6 @@
 .employee-popup {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -37,7 +37,7 @@
         font-size: 24px;
         margin: 20px 0;
     }
-    
+
     /*-------- Popup CSS Main--------*/
     .popup__content {
         background-color: #fff;
@@ -55,7 +55,7 @@
                 text-align: center;
                 > div {
                     margin: 0 auto;
-                    background-image: url('../../content/img/default-avatar.jpg');
+                    background-image: url("../../content/img/default-avatar.jpg");
                     background-size: contain;
                     width: 200px;
                     height: 200px;
@@ -111,7 +111,7 @@
             padding: 0 25px;
         }
     }
-    
+
     /*-------- Button CSS --------*/
     #save-btn {
         height: 40px;
@@ -125,7 +125,8 @@
         }
     }
 
-    #cancel-btn, #delete-btn {
+    #cancel-btn,
+    #delete-btn {
         height: 40px;
         line-height: 40px;
         padding: 0 20px;
@@ -137,7 +138,7 @@
     }
 
     #delete-btn {
-        background-color: #F65454;
+        background-color: #f65454;
         margin-left: 0;
         color: #fff;
         display: none;
@@ -161,8 +162,6 @@
         background-color: #e5e5e5;
     }
 
-
-    
     /*-------- Select tag CSS --------*/
     #customerType {
         width: 100%;

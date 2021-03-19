@@ -109,9 +109,8 @@ class BaseJS {
                 $("#dateOfBirth").val("");
                 $("#email").val("");
                 $("#phoneNumber").val("");
-                $('input[name="gender"]').val("");
-                $("#customerType").val("");
                 // Chỉ hiện nút delete khi vào chế độ sửa
+                $("#save-btn").attr("data-id", "");
                 $("#delete-btn").hide();
             });
 
@@ -163,6 +162,7 @@ class BaseJS {
                     url: me.getDataUrl + "/" + dataId,
                     method: "GET",
                     success: (response) => {
+                        debugger;
                         $("#save-btn").attr("data-id", response.CustomerId);
                         $(deleteBtn).attr("data-id", response.CustomerId);
                         /**

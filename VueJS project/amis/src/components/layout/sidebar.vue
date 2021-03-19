@@ -2,7 +2,9 @@
     <!-- Side Bar -->
     <div class="sidebar">
         <!-- Sidebar top  -->
-        <div class="sidebar__top"></div>
+        <div class="sidebar__top">
+            <img src="../../assets/logo.svg" alt="" />
+        </div>
         <!-- Sidebar main -->
         <div class="sidebar__main">
             <div class="sidebar__main-list">
@@ -64,12 +66,20 @@ export default {
     background-color: #fff;
     border-right: 1px solid #e5e5e5;
     float: left;
+
     /*--------------- sidebar top ---------------*/
+
     &__top {
         height: 60px;
-        background-color: grey;
+        padding: 10px;
+        > img {
+            width: 100%;
+            height: 100%;
+        }
     }
+
     /*--------------- sidebar main ---------------*/
+
     &__main {
         $height: 40px;
         &-list {
@@ -102,4 +112,5 @@ export default {
         }
     }
 }
+
 </style>
