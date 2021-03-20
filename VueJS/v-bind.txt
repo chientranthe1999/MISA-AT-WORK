@@ -1,0 +1,3 @@
+v-bind:class="{}" và v-bind:class="[]"
+
+v-bind:style="{}" và v-bind:class="[]"

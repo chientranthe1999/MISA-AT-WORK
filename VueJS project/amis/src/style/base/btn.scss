@@ -1,0 +1,10 @@
+/*-------- Common CSS for btn --------*/
+
+.btn {
+    display: block;
+    border: 1px solid color.$border-hdark;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}

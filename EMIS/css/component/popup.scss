@@ -2,42 +2,35 @@
     display: none;
     position: fixed;
     top: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100vh;
-
     label {
         display: block;
         margin-bottom: 5px;
     }
-
-    label > span {
+    label>span {
         color: red;
     }
-
     input[type="text"],
     input[type="date"] {
         width: 100%;
         padding-left: 20px;
     }
-
     .input-swaper:nth-child(1) {
         margin-right: 10px;
     }
-
     input[type="radio"] {
         transform: scale(1.5);
     }
-
     /*-------- Popup Title--------*/
-
     .popup__title {
         padding: 0 24px;
         text-transform: uppercase;
         font-size: 24px;
         margin: 20px 0;
     }
-
     /*-------- Popup CSS Main--------*/
     .popup__content {
         background-color: #fff;
@@ -53,7 +46,7 @@
             padding: 0 24px;
             .customer-avt {
                 text-align: center;
-                > div {
+                >div {
                     margin: 0 auto;
                     background-image: url("../../content/img/default-avatar.jpg");
                     background-size: contain;
@@ -63,11 +56,11 @@
                     border: 1px solid #e5e5e5;
                     // margin-bottom: 10px;
                 }
-                > p {
+                >p {
                     margin-top: 10px;
                 }
             }
-            .flex-2 > div {
+            .flex-2>div {
                 margin-bottom: 20px;
             }
             .input-gender {
@@ -82,7 +75,7 @@
                     input:nth-child(1) {
                         margin-left: 5px;
                     }
-                    input + span {
+                    input+span {
                         display: inline-block;
                         height: $hw;
                         line-height: $hw;
@@ -92,13 +85,12 @@
                 }
             }
         }
-
         /*-------- Popup middle CSS --------*/
         &-middle {
             padding: 0 24px;
-            > div {
+            >div {
                 margin-bottom: 20px;
-                > div:nth-child(1) {
+                >div:nth-child(1) {
                     margin-right: 10px;
                 }
             }
@@ -111,7 +103,6 @@
             padding: 0 25px;
         }
     }
-
     /*-------- Button CSS --------*/
     #save-btn {
         height: 40px;
@@ -120,11 +111,10 @@
         align-items: center;
         background-color: $green;
         color: white;
-        > span {
+        >span {
             margin-right: 5px;
         }
     }
-
     #cancel-btn,
     #delete-btn {
         height: 40px;
@@ -136,14 +126,12 @@
     #cancel-btn:hover {
         background-color: #bbb;
     }
-
     #delete-btn {
         background-color: #f65454;
         margin-left: 0;
         color: #fff;
         display: none;
     }
-
     #close-btn {
         $hw: 30px;
         height: $hw;
@@ -157,11 +145,9 @@
         top: 0;
         right: 0;
     }
-
     #close-btn:hover {
         background-color: #e5e5e5;
     }
-
     /*-------- Select tag CSS --------*/
     #customerType {
         width: 100%;

@@ -19,26 +19,26 @@ class BaseJS {
     loadData() {
         try {
             // Làm rỗng bảng
-            $("table tbody").html("");
+            $('table tbody').html('');
             // Ẩn loading khi load xong dữ liệu
             $(document).ajaxComplete(() => {
-                $(".loader").css("display", "none");
+                $('.loader').css('display', 'none');
             });
 
             // Hiện loading khi đang load dữ liệu
             $(document).ajaxStart(() => {
-                $(".loader").css("display", "block");
+                $('.loader').css('display', 'block');
             });
-            var ths = $("th");
+            var ths = $('th');
 
             // Lấy dữ liệu từ API và bind vào frontend
             $.ajax({
-                type: "GET",
+                type: 'GET',
                 url: this.getDataUrl,
-                success: function (response) {
+                success: function(response) {
                     var fieldname,
-                        trs = "",
-                        tds = "",
+                        trs = '',
+                        tds = '',
                         idProp = Object.keys(response[0])[0];
 
                     $.each(response, (index, item) => {
@@ -47,20 +47,18 @@ class BaseJS {
                          * tds lưu trữ các td của 1 tr
                          * Cộng hết các chuỗi với sau đó gán vào bảng
                          */
-                        tds = "";
+                        tds = '';
                         $.each(ths, (key, value) => {
-                            fieldname = $(value).attr("fieldname");
+                            fieldname = $(value).attr('fieldname');
                             switch (fieldname) {
-                                case "Address":
+                                case 'Address':
                                     tds += `<td style="max-width: 150px;">${item[fieldname]}</td>`;
                                     break;
-                                case "DateOfBirth":
-                                    let phoneNumber = formatDate(
-                                        item[fieldname]
-                                    );
+                                case 'DateOfBirth':
+                                    let phoneNumber = formatDate(item[fieldname]);
                                     tds += `<td ">${phoneNumber}</td>`;
                                     break;
-                                case "Salary":
+                                case 'Salary':
                                     let salary = formatSalary(item[fieldname]);
                                     tds += `<td style="text-align: right;">${salary}</td>`;
                                     break;
@@ -72,9 +70,9 @@ class BaseJS {
                         //Tạo ra các tr
                         trs += `<tr data-id="${item[idProp]}">${tds}</tr>`;
                     });
-                    $("table tbody").append(trs);
+                    $('table tbody').append(trs);
                 },
-                error: function (error) {
+                error: function(error) {
                     console.log(error);
                 },
             });
@@ -94,39 +92,39 @@ class BaseJS {
             /**
              * Load lại dữ liệu khi bấm nút reload
              */
-            $(".btn-reload").click(function () {
+            $('.btn-reload').click(function() {
                 me.loadData();
             });
 
             /**
              * Đóng modal khi ấn nút close
              */
-            $("#close-btn").click(() => {
-                $("#employee-popup").hide();
+            $('#close-btn').click(() => {
+                $('#employee-popup').hide();
                 // reset toàn bộ ô input
-                $("#customerCode").val("");
-                $("#fullName").val("");
-                $("#dateOfBirth").val("");
-                $("#email").val("");
-                $("#phoneNumber").val("");
+                $('#customerCode').val('');
+                $('#fullName').val('');
+                $('#dateOfBirth').val('');
+                $('#email').val('');
+                $('#phoneNumber').val('');
                 // Chỉ hiện nút delete khi vào chế độ sửa
-                $("#save-btn").attr("data-id", "");
-                $("#delete-btn").hide();
+                $('#save-btn').attr('data-id', '');
+                $('#delete-btn').hide();
             });
 
             /**
              * Hiện modal thêm khi nhấn nút thêm nhân viên / thêm khách hàng
              */
-            $("#show-modal").click(() => {
-                $("#employee-popup").show();
+            $('#show-modal').click(() => {
+                $('#employee-popup').show();
             });
 
             /**
              * Lưu lại dữ liệu khi ấn nút save
              */
-            $("#save-btn").click(() => {
-                if ($("#save-btn").attr("data-id") == "") {
-                    console.log("lalal");
+            $('#save-btn').click(() => {
+                if ($('#save-btn').attr('data-id') == '') {
+                    console.log('lalal');
                     this.addNewData();
                 } else {
                     this.editData();
@@ -137,7 +135,7 @@ class BaseJS {
              * Sự kiện ấn vào các row để sửa và xóa
              */
 
-            $("tbody").on("dblclick", "tr", function () {
+            $('tbody').on('dblclick', 'tr', function() {
                 /**
                  * Hàm sửa dữ liệu
                  * hàm click() ko gắn với các element động -> dùng hàm on()
@@ -147,24 +145,23 @@ class BaseJS {
                  * @version: 1.0
                  * @author: Chiến Nobi (17/3/2021)
                  */
-                var deleteBtn = $("#delete-btn");
+                var deleteBtn = $('#delete-btn');
                 $(deleteBtn).show();
-                var dataId = $(this).attr("data-id");
+                var dataId = $(this).attr('data-id');
                 var inputObject = {
-                    CustomerCode: $("#customerCode"),
-                    FullName: $("#fullName"),
-                    DateOfBirth: $("#dateOfBirth"),
-                    Email: $("#email"),
-                    PhoneNumber: $("#phoneNumber"),
+                    CustomerCode: $('#customerCode'),
+                    FullName: $('#fullName'),
+                    DateOfBirth: $('#dateOfBirth'),
+                    Email: $('#email'),
+                    PhoneNumber: $('#phoneNumber'),
                 };
                 $.ajax({
                     // tạo ra đường dẫn
-                    url: me.getDataUrl + "/" + dataId,
-                    method: "GET",
+                    url: me.getDataUrl + '/' + dataId,
+                    method: 'GET',
                     success: (response) => {
-                        debugger;
-                        $("#save-btn").attr("data-id", response.CustomerId);
-                        $(deleteBtn).attr("data-id", response.CustomerId);
+                        $('#save-btn').attr('data-id', response.CustomerId);
+                        $(deleteBtn).attr('data-id', response.CustomerId);
                         /**
                          * format dữ liệu ngày sinh để bind vào trường input
                          * Value của trường input type=date có dạng yyyy-mm-dd
@@ -173,11 +170,11 @@ class BaseJS {
                         let year = dateTime.getFullYear();
                         let month = dateTime.getMonth() + 1;
                         // Định dạng month theo kiểu mm
-                        month = month < 10 ? "0" + month : month;
+                        month = month < 10 ? '0' + month : month;
                         let date = dateTime.getDate();
                         // Định dáng date theo kiểu dd
-                        date = date < 10 ? "0" + date : date;
-                        response.DateOfBirth = year + "-" + month + "-" + date;
+                        date = date < 10 ? '0' + date : date;
+                        response.DateOfBirth = year + '-' + month + '-' + date;
 
                         // binding 1 số trường dữ liệu ko cần chuyển đổi
                         $.each(inputObject, (key, item) => {
@@ -185,37 +182,28 @@ class BaseJS {
                         });
 
                         // Binding dữ liệu trường giới tính
-                        if (response.Gender == null || response.Gender == "3") {
-                            $('input[value="3"]').prop("checked", true);
-                        } else
-                            $(`input[value=${response.Gender}]`).prop(
-                                "checked",
-                                true
-                            );
+                        if (response.Gender == null || response.Gender == '3') {
+                            $('input[value="3"]').prop('checked', true);
+                        } else $(`input[value=${response.Gender}]`).prop('checked', true);
 
                         // binding dữ liệu vào trường nhóm khách hàng
-                        $(
-                            `#customerType option[value=${response.CusTomerGroupName}]`
-                        ).prop("selected", true);
+                        $(`#customerType option[value=${response.CusTomerGroupName}]`).prop('selected', true);
                         // Mở popup
-                        $("#employee-popup").show();
+                        $('#employee-popup').show();
                     },
-                    error: function (e) {
+                    error: function(e) {
                         console.log(e);
                     },
                 });
             });
 
-            $("#delete-btn").click(() => {
+            $('#delete-btn').click(() => {
                 $.ajax({
-                    method: "DELETE",
-                    url:
-                        this.getDataUrl +
-                        "/" +
-                        $("#delete-btn").attr("data-id"),
-                    success: function (response) {
-                        alert("delete done");
-                        $("#employee-popup").hide();
+                    method: 'DELETE',
+                    url: this.getDataUrl + '/' + $('#delete-btn').attr('data-id'),
+                    success: function(response) {
+                        alert('delete done');
+                        $('#employee-popup').hide();
                         me.loadData();
                     },
                 });
@@ -234,35 +222,37 @@ class BaseJS {
     addNewData() {
         var me = this;
         var sendForm = {
-            CustomerCode: $("#customerCode").val(),
-            FullName: $("#fullName").val(),
-            DateOfBirth: $("#dateOfBirth").val(),
-            Email: $("#email").val(),
-            PhoneNumber: $("#phoneNumber").val(),
-            Gender: $('input[name="gender"]').val(),
-            CustomerType: $("#customerType").val(),
+            // CustomerCode: $('#customerCode').val(),
+            // FullName: $('#fullName').val(),
+            // DateOfBirth: $('#dateOfBirth').val(),
+            // Email: $('#email').val(),
+            // PhoneNumber: $('#phoneNumber').val(),
+            // PhoneNumber: '1254',
+            // Gender: $('input[name="gender"]').val(),
+            // CustomerType: $('#customerType').val(),
         };
-        this.validateForm(sendForm);
+        // this.validateForm(sendForm);
 
         /**
          * Gửi dữ liệu lên server
          */
         $.ajax({
-            type: "POST",
+            type: 'POST',
             url: this.getDataUrl,
+            contentType: 'application/json',
             data: JSON.stringify(sendForm),
-            contentType: "application/json",
+
             /**
              * Nhận dữ liệu thành công -> thông báo load dữ liệu thành công
              * Load lại dữ liệu
              */
-            success: function () {
-                alert("add done");
-                $("#employee-popup").hide();
+            success: function() {
+                alert('add done');
+                $('#employee-popup').hide();
                 me.loadData();
             },
 
-            error: function () {},
+            error: function() {},
         });
     }
 
@@ -274,9 +264,9 @@ class BaseJS {
      */
 
     validateForm(data) {
-        if (data.FullName == "") {
-            alert("Họ và tên không được để trống");
-            $("#customerCode").focus();
+        if (data.FullName == '') {
+            alert('Họ và tên không được để trống');
+            $('#customerCode').focus();
         }
         return true;
     }
@@ -287,14 +277,14 @@ class BaseJS {
     editData() {
         var me = this;
         var sendForm = {
-            CustomerCode: $("#customerCode").val(),
-            FullName: $("#fullName").val(),
-            DateOfBirth: $("#dateOfBirth").val(),
-            Email: $("#email").val(),
-            PhoneNumber: $("#phoneNumber").val(),
+            CustomerCode: $('#customerCode').val(),
+            FullName: $('#fullName').val(),
+            DateOfBirth: $('#dateOfBirth').val(),
+            Email: $('#email').val(),
+            PhoneNumber: $('#phoneNumber').val(),
             Gender: $('input[name="gender"]').val(),
-            CustomerType: $("#customerType").val(),
-            CustomerId: $("#save-btn").attr("data-id"),
+            CustomerType: $('#customerType').val(),
+            CustomerId: $('#save-btn').attr('data-id'),
         };
         // this.validateForm(sendForm);
 
@@ -302,21 +292,21 @@ class BaseJS {
          * Gửi dữ liệu lên server
          */
         $.ajax({
-            type: "PUT",
-            url: this.getDataUrl + "/" + $("#save-btn").attr("data-id"),
+            type: 'PUT',
+            url: this.getDataUrl + '/' + $('#save-btn').attr('data-id'),
             data: JSON.stringify(sendForm),
-            contentType: "application/json",
+            contentType: 'application/json',
             /**
              * Nhận dữ liệu thành công -> thông báo load dữ liệu thành công
              * Load lại dữ liệu
              */
-            success: function () {
-                alert("Sửa thành công");
-                $("#employee-popup").hide();
+            success: function() {
+                alert('Sửa thành công');
+                $('#employee-popup').hide();
                 me.loadData();
             },
 
-            error: function () {},
+            error: function() {},
         });
     }
 }
