@@ -66,16 +66,17 @@
             <div class="text-right"><b>10</b> nhân viên/trang</div>
         </div>
 
-        <Add :modalStatus="this.modalStatus" :changeModalStatus="this.changeModalStatus" />
+        <EmployeePopupAdd :modalStatus="this.modalStatus" :changeModalStatus="this.changeModalStatus" />
     </div>
     <!-- End content -->
 </template>
 
 <script>
     import { formatSalary, formatDate } from '../../helper/formatTable.js';
-    import Add from '../popup/Add';
+    import EmployeePopupAdd from '../popup/EmployeePopupAdd';
     export default {
         name: 'Content',
+
         data() {
             return {
                 dataList: '',
@@ -163,7 +164,7 @@
         },
 
         components: {
-            Add,
+            EmployeePopupAdd,
         },
     };
 </script>

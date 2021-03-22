@@ -15,3 +15,6 @@ data() {
 
 15/3/2021
 - click() của jquery ko tương tác đượng vs các element động (được sinh ra bởi js hoặc cái gì đó)
+
+- F5: reload lại trang lây dữ liệu từ cache
+- Ctrl + F5: ko lấy dữ liệu từ cache
