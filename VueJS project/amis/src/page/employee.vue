@@ -1,7 +1,6 @@
 <template>
     <div>
         <Sidebar />
-        <BaseCombox placeholder="Nhập vào xe của bạn" :selectList="selectList" />
         <div class="right-swapper">
             <Header />
             <Content :dataBinding="this.employeeList" :isLoading="this.isLoading" :rowTitle="this.rowTitle" :reload="this.reload" />
@@ -13,7 +12,6 @@
     import Content from '../components/layout/Content';
     import Header from '../components/layout/Header';
     import Sidebar from '../components/layout/Sidebar';
-    import BaseCombox from '../components/common/BaseCombox';
     import axios from 'axios';
 
     export default {
@@ -21,7 +19,9 @@
         data() {
             return {
                 employeeList: [],
+
                 isLoading: true,
+
                 rowTitle: [
                     { titleCode: 'EmployeeCode', title: 'Mã Nhân Viên' },
                     { titleCode: 'FullName', title: 'Họ tên' },
@@ -39,6 +39,8 @@
                     { key: 1, value: 'Mecerdes' },
                     { key: 2, value: 'Ferari' },
                     { key: 3, value: 'Lamborghini' },
+                    { key: 4, value: 'Xe máy' },
+                    { key: 5, value: 'Xe đạp' },
                 ],
             };
         },
@@ -46,7 +48,6 @@
             Content,
             Header,
             Sidebar,
-            BaseCombox,
         },
 
         // Lấy dữ liệu khi component được tạo thành công (render ra DOM ảo)
