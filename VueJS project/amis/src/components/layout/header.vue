@@ -2,12 +2,12 @@
     <!-- Header -->
     <div class="header">
         <div class="header__left">
-            <BaseCombobox placeholder="Nhập vào xe của bạn" :selectLists="selectLists" />
+            <BaseCombobox placeholder="Nhập vào xe của bạn" :selectLists="selectLists" :comboboxBorder="comboboxBorder" ref="baseBox" />
         </div>
         <div class="header__right">
             <div class="user-avt"></div>
             <div class="user-name">GC hihi</div>
-            <div class="user-action"><i class="fas fa-ellipsis-h"></i></div>
+            <div class="user-action" @click="testRef"><i class="fas fa-ellipsis-h"></i></div>
         </div>
     </div>
     <!-- End header  -->
@@ -24,7 +24,15 @@
                     { key: 1, value: 'GC Corporation' },
                     { key: 2, value: 'Nhà hàng biển đông' },
                 ],
+
+                comboboxBorder: 'no-border',
             };
+        },
+
+        methods: {
+            testRef: function() {
+                console.log(this.$refs.baseBox.inputValue);
+            },
         },
 
         components: {

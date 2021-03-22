@@ -1,5 +1,5 @@
 <template>
-    <div class="combobox" :style="{ width: this.comboxStyle.width, height: this.comboxStyle.height, border: this.comboxStyle.border }">
+    <div class="combobox" :style="{ width: this.comboboxWidth, height: this.comboboxHeight, border: this.comboboxBorder }">
         <input type="text" :placeholder="this.placeholder" readonly="readonly" :value="inputValue" @keyup.13="changing" tabindex="1" />
         <div @click="changing" tabindex="1" @keyup.13="changing" :style="{ transform: 'rotate(' + rotate + 'deg)' }">
             <i class="fas fa-chevron-down"></i>
@@ -27,7 +27,6 @@
         data() {
             return {
                 rotate: 0,
-
                 inputValue: this.defaultValue,
             };
         },
@@ -45,17 +44,19 @@
                 default: 'Chiến Nobi',
             },
 
-            comboxStyle: {
-                type: Object,
-                // Object or array defaults must be returned from a factory function
-                default: function() {
-                    return {
-                        backgroundColorHover: '#bbb',
-                        width: '250px',
-                        height: '40px',
-                        border: 'none',
-                    };
-                },
+            comboboxHeight: {
+                type: String,
+                default: '40px',
+            },
+
+            comboboxWidth: {
+                type: String,
+                default: '250px',
+            },
+
+            comboboxBorder: {
+                type: String,
+                default: '1px solid #e5e5e5',
             },
 
             textColor: {
@@ -63,6 +64,8 @@
                 default: '#000000',
             },
         },
+
+        mounted: {},
 
         computed: {
             showList: function() {
@@ -87,6 +90,8 @@
                 this.inputValue = value;
                 this.rotate = this.rotate == 0 ? 180 : 0;
             },
+
+            checkingDefaultValue() {},
         },
     };
 </script>
