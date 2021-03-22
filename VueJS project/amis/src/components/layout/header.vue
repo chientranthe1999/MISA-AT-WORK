@@ -2,7 +2,13 @@
     <!-- Header -->
     <div class="header">
         <div class="header__left">
-            <BaseCombobox placeholder="Nhập vào xe của bạn" :selectLists="selectLists" :comboboxBorder="comboboxBorder" ref="baseBox" />
+            <BaseCombobox
+                placeholder="Nhập vào xe của bạn"
+                :selectLists="selectLists"
+                :comboboxBorder="comboboxBorder"
+                fontSize="20px"
+                fontWeight="bold"
+            />
         </div>
         <div class="header__right">
             <div class="user-avt"></div>
