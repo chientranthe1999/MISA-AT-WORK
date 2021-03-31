@@ -27,20 +27,8 @@
                             <input class="input" type="text" id="numberCode" />
                         </div>
                         <div class="flex-1 input-swaper">
-                            <!-- <label for="customerType">Nhóm khách hàng (<span>*</span>)</label>
-                            <select name="" id="customerType">
-                                <option value="Nhóm khách hàng MISA">
-                                    Nhóm khách hàng MISA
-                                </option>
-                                <option value="Khách vip">Khách VIP</option>
-                            </select> -->
                             <label for="">Phân loại khách hàng (<span>*</span>)</label>
-                            <BaseCombobox
-                                :selectLists="selectLists"
-                                :comboboxPadding="comboboxPadding"
-                                :comboboxWidth="comboboxWidth"
-                                :fontSize="fontSize"
-                            />
+                            <BaseCombobox :selectLists="selectLists" :comboboxPadding="comboboxPadding" comboboxWidth="100%" :fontSize="fontSize" />
                         </div>
                     </div>
 
@@ -106,6 +94,7 @@
     export default {
         name: 'EmployeePopupAdd',
 
+        // data
         data() {
             return {
                 selectLists: [
@@ -115,19 +104,26 @@
 
                 comboboxPadding: '0 0 0 20px',
 
-                comboboxWidth: '100%',
-
                 fontSize: '14px',
             };
         },
-
+        // props
         props: {
-            modalStatus: Boolean,
+            modalStatus: {
+                type: Boolean,
+                default: false,
+            },
+
             changeModalStatus: Function,
         },
 
         components: {
             BaseCombobox,
+        },
+
+        updated() {
+            var ip = document.querySelector('#customerCode');
+            ip.focus();
         },
     };
 </script>

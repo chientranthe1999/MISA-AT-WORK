@@ -67,9 +67,14 @@
                 this.getData();
             },
 
+            /**
+             * Lấy dữ liệu từ api sau đó bind vào frontend
+             */
+
             getData() {
                 axios
-                    .get('http://api.manhnv.net/api/customers')
+                    .get('http://api.manhnv.net/api/employees')
+                    // .get('https://localhost:44318/api/v1/Customer')
                     .then((response) => {
                         this.employeeList = response.data;
                         this.isLoading = false;

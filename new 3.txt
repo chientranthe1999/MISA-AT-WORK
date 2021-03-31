@@ -1,0 +1,7 @@
+--------C# generic--------
+-> Tối ưu hóa code bằng cách làm việc trên nhiều kiểu dữ liệu truyền vào.
+
+1. Cú pháp của generic: <T>
+	+ Class generic: Class<T>
+	+ Method generic: Method<T>
+	+ Interface generic: Interface<T>
