@@ -1,13 +1,20 @@
 
 		
-Có hàm nào tự chạy khi thuộc tính thay đổi ko 
+Có hàm nào tự chạy khi thuộc tính thay đổi ko (computed)
 
 - Làm thể nào chỉ chạy 1 hàm gắn vs một thuộc tính (props)
 	VD: chỉ chạy hàm Runtime khi time thay đổi
 Nếu muốn khai báo biến dataList ko có dữ liệu thì phải làm như sau: 	
+
 data() {
 	return {
-		dataList: "",
+		dataList: {
+			type: Array, 
+			// default array must return from factory method
+			default: function () {
+				return {}
+			}
+		}
 	}
 }
 
@@ -15,3 +22,12 @@ data() {
 
 15/3/2021
 - click() của jquery ko tương tác đượng vs các element động (được sinh ra bởi js hoặc cái gì đó)
+
+- F5: reload lại trang lây dữ liệu từ cache
+- Ctrl + F5: ko lấy dữ liệu từ cache
+
+24/3/2021
+
+- Ok() -> return HTML code: 200 Ok
+- Created() -> return HTML code: 201 Created
+- NoContent() -> return HTML code: 204

@@ -1,0 +1,9 @@
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Infrastructure.deps.json
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Infrastructure.dll
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Infrastructure.pdb
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.csprojAssemblyReference.cache
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.AssemblyInfo.cs
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.dll
+C:\Users\ttchien\Downloads\MISA-AT-WORK\C#\MISA.BASE\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.pdb

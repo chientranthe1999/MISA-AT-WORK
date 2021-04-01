@@ -1,15 +1,15 @@
 <template>
-    <div class="combobox" :style="{ width: this.comboboxWidth, height: this.comboboxHeight, border: this.comboboxBorder }">
+    <div class="combobox" :style="{ width: comboboxWidth, height: comboboxHeight, border: comboboxBorder, padding: comboboxPadding }">
         <input
             type="text"
-            :placeholder="this.placeholder"
+            :placeholder="placeholder"
             readonly="readonly"
             :value="inputValue"
             @keyup.13="changing"
             tabindex="1"
             :style="{ 'font-size': fontSize, 'font-weight': fontWeight, color: textColor }"
         />
-        <div @click="changing" tabindex="1" @keyup.13="changing" :style="{ transform: 'rotate(' + rotate + 'deg)' }">
+        <div @click="changingArrowDirection" tabindex="1" @keyup.13="changingArrowDirection" :style="{ transform: 'rotate(' + rotate + 'deg)' }">
             <i class="fas fa-chevron-down"></i>
         </div>
 
@@ -22,8 +22,8 @@
                 tabindex="1"
                 @keyup.13="setValue(item.value)"
             >
-                {{ item.value }}
-                <span><i class="fas fa-check"></i></span>
+                <span>{{ item.value }}</span>
+                <span v-if="item.value == inputValue"><i class="fas fa-check"></i></span>
             </div>
         </div>
     </div>
@@ -50,13 +50,18 @@
             },
 
             defaultValue: {
-                type: String,
-                default: '',
+                type: Object,
+                default() {
+                    return {
+                        key: '-1',
+                        value: '',
+                    };
+                },
             },
 
             comboboxHeight: {
                 type: String,
-                default: '50px',
+                default: '40px',
             },
 
             comboboxWidth: {
@@ -66,7 +71,7 @@
 
             comboboxBorder: {
                 type: String,
-                default: '1px solid #e5e5e5',
+                default: '1px solid #bbb',
             },
 
             textColor: {
@@ -82,6 +87,11 @@
             fontWeight: {
                 type: String,
                 default: '100',
+            },
+
+            comboboxPadding: {
+                type: String,
+                default: '0',
             },
         },
 
@@ -102,7 +112,7 @@
             /**
              * Change arrow direction when click
              */
-            changing() {
+            changingArrowDirection() {
                 this.rotate = this.rotate == 0 ? 180 : 0;
             },
 
@@ -118,9 +128,9 @@
              * Function to set default value when props defaultValue is empty
              */
             checkingDefaultValue() {
-                if (this.defaultValue == '' || this.defaultValue == null) {
+                if (this.defaultValue.value == '' || this.defaultValue.value == null) {
                     return this.selectLists[0].value;
-                }
+                } else return this.defaultValue.value;
             },
         },
     };

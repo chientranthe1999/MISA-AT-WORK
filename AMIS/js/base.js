@@ -222,14 +222,14 @@ class BaseJS {
     addNewData() {
         var me = this;
         var sendForm = {
-            // CustomerCode: $('#customerCode').val(),
-            // FullName: $('#fullName').val(),
-            // DateOfBirth: $('#dateOfBirth').val(),
-            // Email: $('#email').val(),
-            // PhoneNumber: $('#phoneNumber').val(),
-            // PhoneNumber: '1254',
-            // Gender: $('input[name="gender"]').val(),
-            // CustomerType: $('#customerType').val(),
+            CustomerCode: $('#customerCode').val(),
+            FullName: $('#fullName').val(),
+            DateOfBirth: $('#dateOfBirth').val(),
+            Email: $('#email').val(),
+            PhoneNumber: $('#phoneNumber').val(),
+            PhoneNumber: '1254',
+            Gender: $('input[name="gender"]').val(),
+            CustomerType: $('#customerType').val(),
         };
         // this.validateForm(sendForm);
 
@@ -239,8 +239,8 @@ class BaseJS {
         $.ajax({
             type: 'POST',
             url: this.getDataUrl,
-            contentType: 'application/json',
             data: JSON.stringify(sendForm),
+            contentType: 'application/json',
 
             /**
              * Nhận dữ liệu thành công -> thông báo load dữ liệu thành công

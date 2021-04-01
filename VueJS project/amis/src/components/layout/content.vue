@@ -66,16 +66,17 @@
             <div class="text-right"><b>10</b> nhân viên/trang</div>
         </div>
 
-        <Add :modalStatus="this.modalStatus" :changeModalStatus="this.changeModalStatus" />
+        <EmployeePopupAdd :modalStatus="this.modalStatus" :changeModalStatus="this.changeModalStatus" />
     </div>
     <!-- End content -->
 </template>
 
 <script>
     import { formatSalary, formatDate } from '../../helper/formatTable.js';
-    import Add from '../popup/Add';
+    import EmployeePopupAdd from '../popup/EmployeePopupAdd';
     export default {
         name: 'Content',
+
         data() {
             return {
                 dataList: '',
@@ -163,185 +164,11 @@
         },
 
         components: {
-            Add,
+            EmployeePopupAdd,
         },
     };
 </script>
 
 <style lang="scss" scoped>
-    $green: #019160;
-    $hdark: #e5e5e5;
-    .content {
-        height: calc(100vh - 61px);
-        width: 100%;
-        padding: 0 20px;
-        /*------------------ Content top ------------------*/
-        &__top {
-            $height: 80px;
-            display: flex;
-            justify-content: space-between;
-            height: 80px;
-            align-items: center;
-
-            &-header {
-                font-size: 25px;
-            }
-
-            &-btn {
-                display: flex;
-
-                .btn {
-                    padding: 10px 15px;
-                    font-size: 18px;
-                }
-
-                .btn-syn {
-                    color: $green;
-                    margin-right: 10px;
-                }
-
-                .btn-add {
-                    background-color: $green;
-                    color: white;
-
-                    span:first-child {
-                        margin-right: 3px;
-                    }
-                }
-            }
-        }
-
-        /*------------------ Content middle ------------------*/
-        &__middle {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            &-input {
-                flex: 9;
-                display: flex;
-                flex-wrap: nowrap;
-
-                .search-bar {
-                    height: 40px;
-                    border: 1px solid #bbbbbb;
-                    padding: 10px 16px;
-                    border-radius: 4px;
-                    font-size: 16px;
-                    margin-right: 20px;
-                }
-
-                .search-bar:focus {
-                    border-color: $green;
-                    outline: $green;
-                }
-
-                .search-name {
-                    min-width: 370px;
-                    flex: 2;
-                    padding-left: 40px;
-                    background-image: url('../../assets/icon/search-icon.png');
-                    background-position: 10px;
-                    background-repeat: no-repeat;
-                    background-size: 20px;
-                }
-
-                .search-department {
-                    width: 300px;
-                    flex: 1.5;
-                }
-
-                .search-status {
-                    flex: 1.5;
-                }
-            }
-
-            &-btn {
-                flex: 1;
-                display: flex;
-                justify-content: flex-end;
-                .btn {
-                    width: 40px;
-                    height: 40px;
-                    line-height: 30px;
-                    text-align: center;
-                }
-                .btn-download {
-                    margin-right: 10px;
-                }
-            }
-        }
-
-        /*------------------ Content main ------------------*/
-        &__main {
-            height: calc(100vh - 261px);
-            overflow: auto;
-            position: relative;
-        }
-
-        /*------------------ Content bottom ------------------*/
-        &__bottom {
-            height: 60px;
-            display: flex;
-            padding: 15px 15px 0 15px;
-
-            .text-left {
-                flex: 0.8;
-            }
-
-            .text-right {
-                flex: 0.8;
-                text-align: right;
-            }
-
-            .pagination-bar {
-                flex: 1;
-                text-align: center;
-                min-width: 360px;
-
-                > span {
-                    display: inline-block;
-                    cursor: pointer;
-                }
-
-                .pagination-number {
-                    $hw: 30px;
-                    width: $hw;
-                    height: $hw;
-                    border-radius: 50%;
-                    background-color: #e5e5e5;
-                    border: 1px solid #bbbbbb;
-                    text-align: center;
-                    line-height: $hw;
-                    margin: 0 4px;
-                }
-
-                .pagination-number.active {
-                    background-color: $green;
-                    color: #fff;
-                    font-weight: 600;
-                }
-
-                .move-btn {
-                    font-size: 20px;
-                    margin: 0 10px;
-                }
-            }
-        }
-    }
-    // Loading icon CSS
-    .loader {
-        width: 300px;
-        height: 300px;
-        background-image: url(../../assets/icon/loading-icon.gif);
-        background-size: cover;
-        position: absolute;
-        right: 50%;
-        top: 50%;
-        transform: translate(50%, -50%);
-        display: none;
-    }
-
-    .active {
-        display: block;
-    }
+    @import '../../style/layout/content.scss';
 </style>
