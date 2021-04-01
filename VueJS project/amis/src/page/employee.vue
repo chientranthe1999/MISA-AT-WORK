@@ -69,7 +69,7 @@
 
             getData() {
                 axios
-                    .get('http://api.manhnv.net/api/customers')
+                    .get('http://api.manhnv.net/api/employees')
                     .then((response) => {
                         this.employeeList = response.data;
                         this.isLoading = false;
