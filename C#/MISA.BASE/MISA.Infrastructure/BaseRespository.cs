@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MISA.ApplicationCore;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,7 +38,7 @@ namespace MISA.Infrastructure
             return res;
         }
 
-        public T GetById(string id)
+        public T GetById(Guid id)
         {
             string _idName = _tableName + "id";
             var res = _dbConnection.Query<T>($"Proc_Get{_tableName}ById", new { _idName = id }, commandType: CommandType.StoredProcedure).FirstOrDefault();
@@ -59,6 +60,7 @@ namespace MISA.Infrastructure
         {
             throw new NotImplementedException();
         }
+
         #endregion
     }
 }

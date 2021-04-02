@@ -1,5 +1,8 @@
 <template>
-    <div class="combobox" :style="{ width: comboboxWidth, height: comboboxHeight, border: comboboxBorder, padding: comboboxPadding }">
+    <div
+        class="combobox"
+        :style="{ width: comboboxWidth, height: comboboxHeight, border: comboboxBorder, padding: comboboxPadding }"
+    >
         <input
             type="text"
             :placeholder="placeholder"
@@ -9,7 +12,12 @@
             tabindex="1"
             :style="{ 'font-size': fontSize, 'font-weight': fontWeight, color: textColor }"
         />
-        <div @click="changingArrowDirection" tabindex="1" @keyup.13="changingArrowDirection" :style="{ transform: 'rotate(' + rotate + 'deg)' }">
+        <div
+            @click="changingArrowDirection"
+            tabindex="1"
+            @keyup.13="changingArrowDirection"
+            :style="{ transform: 'rotate(' + rotate + 'deg)' }"
+        >
             <i class="fas fa-chevron-down"></i>
         </div>
 
@@ -136,6 +144,6 @@
     };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
     @import '../../style/components/common/BaseCombobox';
 </style>

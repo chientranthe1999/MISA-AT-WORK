@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MISA.ApplicationCore.Services
+namespace MISA.ApplicationCore
 {
-    public class CustomerService
+    public class CustomerService : BaseService<Customer>
     {
- 
+        
     }
 }

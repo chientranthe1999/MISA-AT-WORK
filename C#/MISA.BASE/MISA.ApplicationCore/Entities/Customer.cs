@@ -13,7 +13,7 @@ namespace MISA.ApplicationCore
         /// </summary>
         /// In newer version of .NET -> Không phải chuyển kiểu Guid sang String 
 
-        public String CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
         public Guid CustomerGroupId { get; set; }
 

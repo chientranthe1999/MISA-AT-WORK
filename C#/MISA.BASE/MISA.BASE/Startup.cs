@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MISA.ApplicationCore;
+using MISA.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,9 @@ namespace MISA.BASE
                         builder.AllowAnyOrigin();
                     });
             });
+
+            services.AddScoped(typeof(IBaseRespository<>), typeof(BaseRespository<>));
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,38 +12,42 @@
                 <div class="flex-2">
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
-                            <label for="customerCode">Mã khách hàng (<span>*</span>)</label>
+                            <p class="input-title" for="customerCode">Mã khách hàng (<span>*</span>)</p>
                             <input class="input" type="text" id="customerCode" />
                         </div>
                         <div class="flex-1 input-swaper">
-                            <label for="fullName">Họ và tên (<span>*</span>)</label>
+                            <p class="input-title" for="fullName">Họ và tên (<span>*</span>)</p>
                             <input class="input" type="text" id="fullName" />
                         </div>
                     </div>
 
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
-                            <label for="numberCode">Mã thẻ thành viên (<span>*</span>)</label>
+                            <p class="input-title" for="numberCode">Mã thẻ thành viên (<span>*</span>)</p>
                             <input class="input" type="text" id="numberCode" />
                         </div>
                         <div class="flex-1 input-swaper">
-                            <label for="">Phân loại khách hàng (<span>*</span>)</label>
-                            <BaseCombobox :selectLists="selectLists" :comboboxPadding="comboboxPadding" comboboxWidth="100%" :fontSize="fontSize" />
+                            <p class="input-title" for="">Phân loại khách hàng (<span>*</span>)</p>
+                            <BaseCombobox
+                                :selectLists="selectLists"
+                                :comboboxPadding="comboboxPadding"
+                                comboboxWidth="100%"
+                                :fontSize="fontSize"
+                            />
                         </div>
                     </div>
 
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
-                            <label for="dateOfBirth">Ngày sinh</label>
+                            <p class="input-title" for="dateOfBirth">Ngày sinh</p>
                             <input class="input" type="date" id="dateOfBirth" />
                         </div>
                         <div class="flex-1 input-swaper input-gender">
-                            <label for="">Giới tính (<span>*</span>)</label>
-                            <div class="radio-swapper">
-                                <input class="" type="radio" value="1" name="gender" /><span>Nam</span>
-                                <input class="" type="radio" value="0" name="gender" checked /><span>Nữ</span>
-                                <input class="" type="radio" value="3" name="gender" />
-                                <span>Khác</span>
+                            <p class="input-title" for="">Giới tính (<span>*</span>)</p>
+                            <div class="radio-swapper d-flex">
+                                <BaseRatio value="1" name="gender" :isChecked="true">Nam</BaseRatio>
+                                <BaseRatio value="0" name="gender">Nữ</BaseRatio>
+                                <BaseRatio value="2" name="gender">Khác</BaseRatio>
                             </div>
                         </div>
                     </div>
@@ -53,26 +57,26 @@
             <div class="popup__content-middle">
                 <div class="d-flex">
                     <div class="flex-2">
-                        <label for="email">Email (<span>*</span>)</label>
+                        <p class="input-title" for="email">Email (<span>*</span>)</p>
                         <input class="input" type="text" placeholder="example@domain.com" id="email" />
                     </div>
                     <div class="flex-1">
-                        <label for="">Số điện thoại (<span>*</span>)</label>
+                        <p class="input-title" for="">Số điện thoại (<span>*</span>)</p>
                         <input class="input" type="text" placeholder="" id="phoneNumber" />
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="flex-2">
-                        <label for="">Tên Công Ty</label>
+                        <p class="input-title" for="">Tên Công Ty</p>
                         <input class="input" type="text" placeholder="" />
                     </div>
                     <div class="flex-1">
-                        <label for="">Mã số thuế</label>
+                        <p class="input-title" for="">Mã số thuế</p>
                         <input class="input" type="text" placeholder="Mã số thuế công ty" />
                     </div>
                 </div>
                 <div class="flex-1">
-                    <label for="">Địa chỉ</label>
+                    <p class="input-title" for="">Địa chỉ</p>
                     <input class="input" type="text" placeholder="Địa chỉ" />
                 </div>
             </div>
@@ -90,6 +94,7 @@
 
 <script>
     import BaseCombobox from '../common/BaseCombobox';
+    import BaseRatio from '../common/BaseRatio';
 
     export default {
         name: 'EmployeePopupAdd',
@@ -119,11 +124,11 @@
 
         components: {
             BaseCombobox,
+            BaseRatio,
         },
 
         updated() {
-            var ip = document.querySelector('#customerCode');
-            ip.focus();
+            document.querySelector('#customerCode').focus();
         },
     };
 </script>
@@ -139,12 +144,12 @@
         width: 100%;
         height: 100vh;
 
-        label {
+        .input-title {
             display: block;
             margin-bottom: 5px;
         }
 
-        label > span {
+        .input-title > span {
             color: red;
         }
 
@@ -156,10 +161,6 @@
 
         .input-swaper:nth-child(1) {
             margin-right: 10px;
-        }
-
-        input[type='radio'] {
-            transform: scale(1.5);
         }
 
         /*-------- Popup Title--------*/
@@ -213,13 +214,6 @@
                         height: $hw;
                         line-height: $hw;
                         input:nth-child(1) {
-                            margin-left: 5px;
-                        }
-                        input + span {
-                            display: inline-block;
-                            height: $hw;
-                            line-height: $hw;
-                            margin-right: 10px;
                             margin-left: 5px;
                         }
                     }
@@ -307,5 +301,36 @@
 
     .employee-popup.active {
         display: block;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+    }
+
+    .circle {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #bbb;
+        display: inline-block;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    input:checked + .circle {
+        border-color: #019160;
+    }
+
+    input:checked + .circle::after {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #019160;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
     }
 </style>

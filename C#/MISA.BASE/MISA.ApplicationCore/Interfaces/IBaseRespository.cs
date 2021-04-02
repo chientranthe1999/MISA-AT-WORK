@@ -17,7 +17,7 @@ namespace MISA.ApplicationCore
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Dữ liệu tìm thấy</returns>
-        T GetById(string id);
+        T GetById(Guid id);
 
         /// <summary>
         /// Thêm mới dữ liệu
