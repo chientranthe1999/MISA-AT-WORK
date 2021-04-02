@@ -3,8 +3,14 @@
         <Sidebar />
         <div class="right-swapper">
             <Header />
-            <Content :dataBinding="this.employeeList" :isLoading="this.isLoading" :rowTitle="this.rowTitle" :reload="this.reload" />
+            <Content
+                :dataBinding="this.employeeList"
+                :isLoading="this.isLoading"
+                :rowTitle="this.rowTitle"
+                :reload="this.reload"
+            />
         </div>
+        <BaseDeleteWarning />
     </div>
 </template>
 
@@ -12,6 +18,7 @@
     import Content from '../components/layout/Content';
     import Header from '../components/layout/Header';
     import Sidebar from '../components/layout/Sidebar';
+    import BaseDeleteWarning from '../components/common/BaseDeleteWarning';
     import axios from 'axios';
 
     export default {
@@ -48,6 +55,7 @@
             Content,
             Header,
             Sidebar,
+            BaseDeleteWarning,
         },
 
         // Lấy dữ liệu khi component được tạo thành công (render ra DOM ảo)

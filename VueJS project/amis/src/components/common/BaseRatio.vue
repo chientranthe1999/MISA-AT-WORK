@@ -10,6 +10,12 @@
     export default {
         name: 'BaseRatio',
 
+        data() {
+            return {
+                keyID: Date.now().toString(),
+            };
+        },
+
         props: {
             name: {
                 type: String,
@@ -25,13 +31,6 @@
                 default: '',
             },
 
-            keyID: {
-                type: String,
-                default() {
-                    return Date.now().toString();
-                },
-            },
-
             isChecked: {
                 type: Boolean,
                 default: false,
@@ -44,6 +43,7 @@
     label {
         display: flex;
         align-items: center;
+        margin-right: 8px;
     }
 
     input[type='radio'] {
@@ -57,6 +57,7 @@
         display: inline-block;
         border-radius: 50%;
         position: relative;
+        margin-right: 2px;
     }
 
     input:checked + .circle {
