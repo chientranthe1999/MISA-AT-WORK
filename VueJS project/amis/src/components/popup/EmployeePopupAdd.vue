@@ -13,7 +13,7 @@
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="customerCode">Mã khách hàng (<span>*</span>)</p>
-                            <input class="input" type="text" id="customerCode" />
+                            <input class="input" type="text" id="customerCode" feild-required="true" />
                         </div>
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="fullName">Họ và tên (<span>*</span>)</p>
@@ -127,8 +127,26 @@
             BaseRatio,
         },
 
+        mounted() {},
+
         updated() {
             document.querySelector('#customerCode').focus();
+            if (this.modalStatus) {
+                var inputs = document.querySelectorAll('input[type="text"]');
+                inputs.forEach((ele) =>
+                    ele.addEventListener('blur', () => {
+                        var mustRequired = ele.getAttribute('feild-required');
+                        if (ele.value == '' && mustRequired == 'true') {
+                            ele.classList.add('value-error');
+                        } else ele.classList.remove('value-error');
+                    })
+                );
+            }
+        },
+        destroyed() {
+            var inputs = document.querySelectorAll('input[type="text"]');
+
+            inputs.forEach((ele) => ele.removeEventListener('blur', false));
         },
     };
 </script>
@@ -332,5 +350,9 @@
         right: 50%;
         top: 50%;
         transform: translate(50%, -50%);
+    }
+
+    .value-error {
+        border-color: red;
     }
 </style>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.Core.Models
+namespace MISA.Core.Entities
 {
-    abstract class BaseEntity
+    public abstract class BaseEntity
     {
         public DateTime? CreatedDate { get; set; }
 

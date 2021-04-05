@@ -9,6 +9,7 @@
             readonly="readonly"
             :value="inputValue"
             @keyup.13="changing"
+            @click="changingArrowDirection"
             tabindex="1"
             :style="{ 'font-size': fontSize, 'font-weight': fontWeight, color: textColor }"
         />

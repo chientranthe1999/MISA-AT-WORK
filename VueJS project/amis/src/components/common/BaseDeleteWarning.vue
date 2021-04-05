@@ -8,7 +8,7 @@
             </div>
             <div class="dialog__infor">
                 <div class="dialog__infor-icon"></div>
-                <p>Bạn có chắc muốn xóa bản ghi này Chiến Nobi kjdf mandkjhsdf áhldkfuhlsdku</p>
+                <p>Bạn có chắc muốn xóa bản ghi này không??</p>
             </div>
             <div class="dialog__footer">
                 <div class="dialog__footer-cancel">Hủy</div>
@@ -19,11 +19,21 @@
 </template>
 
 <script>
-    export default {};
+    export default {
+        name: 'BaseDeleteWarning',
+
+        props: {
+            message: {
+                type: String,
+                default: '',
+            },
+        },
+    };
 </script>
 
 <style scoped lang="scss">
     .dialog-swapper {
+        display: none;
         position: fixed;
         top: 0;
         right: 0;
@@ -46,10 +56,6 @@
         overflow: hidden;
         width: 350px;
 
-        &__infor {
-            padding: 0 24px;
-        }
-
         &__header {
             padding: 0 24px;
             margin-bottom: 24px;
@@ -59,16 +65,23 @@
         }
 
         &__infor {
+            padding: 0 24px;
             display: flex;
+            align-items: center;
+            margin-bottom: 24px;
 
             &-icon {
                 margin-right: 10px;
                 height: 50px;
                 width: 50px;
                 background-color: #e5e5e5;
+                border-radius: 50%;
             }
-            padding: 0 24px;
-            margin-bottom: 24px;
+
+            > p {
+                flex: 1;
+                // word-break: ;
+            }
         }
 
         &__footer {
