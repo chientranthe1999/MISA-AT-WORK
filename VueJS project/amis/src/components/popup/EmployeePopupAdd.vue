@@ -13,11 +13,11 @@
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="customerCode">Mã khách hàng (<span>*</span>)</p>
-                            <input class="input" type="text" id="customerCode" feild-required="true" />
+                            <input class="input" type="text" id="customerCode" value-required />
                         </div>
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="fullName">Họ và tên (<span>*</span>)</p>
-                            <input class="input" type="text" id="fullName" />
+                            <input class="input" type="text" id="fullName" value-required />
                         </div>
                     </div>
 
@@ -28,12 +28,7 @@
                         </div>
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="">Phân loại khách hàng (<span>*</span>)</p>
-                            <BaseCombobox
-                                :selectLists="selectLists"
-                                :comboboxPadding="comboboxPadding"
-                                comboboxWidth="100%"
-                                :fontSize="fontSize"
-                            />
+                            <BaseCombobox :selectLists="selectLists" :comboboxPadding="comboboxPadding" comboboxWidth="100%" :fontSize="fontSize" />
                         </div>
                     </div>
 
@@ -62,7 +57,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="input-title" for="">Số điện thoại (<span>*</span>)</p>
-                        <input class="input" type="text" placeholder="" id="phoneNumber" />
+                        <input class="input" type="text" placeholder="" id="phoneNumber" value-required />
                     </div>
                 </div>
                 <div class="d-flex">
@@ -129,230 +124,44 @@
 
         mounted() {},
 
+        methods: {
+            /**
+             *
+             * @param {Object} selectedDom: element
+             * @
+             */
+            checkEmpty(selectedDom) {
+                var mustRequired = selectedDom.hasAttribute('value-required');
+                if (selectedDom.value == '' && mustRequired) {
+                    selectedDom.classList.add('value-error');
+                } else selectedDom.classList.remove('value-error');
+            },
+        },
+
         updated() {
             document.querySelector('#customerCode').focus();
             if (this.modalStatus) {
                 var inputs = document.querySelectorAll('input[type="text"]');
-                inputs.forEach((ele) =>
-                    ele.addEventListener('blur', () => {
-                        var mustRequired = ele.getAttribute('feild-required');
-                        if (ele.value == '' && mustRequired == 'true') {
-                            ele.classList.add('value-error');
-                        } else ele.classList.remove('value-error');
-                    })
-                );
+                inputs.forEach((item) => item.addEventListener('blur', () => this.checkEmpty(item)));
+                // inputs.forEach((item) =>
+                //     item.addEventListener('blur', () => {
+                //         var mustRequired = item.hasAttribute('value-required');
+                //         if (item.value == '' && mustRequired) {
+                //             item.classList.add('value-error');
+                //         } else item.classList.remove('value-error');
+                //     })
+                // );
             }
         },
         destroyed() {
             var inputs = document.querySelectorAll('input[type="text"]');
 
-            inputs.forEach((ele) => ele.removeEventListener('blur', false));
+            // remove event listener
+            inputs.forEach((element) => element.removeEventListener('blur', this.checkEmpty(element)));
         },
     };
 </script>
 
 <style scoped lang="scss">
-    $green: #01b075;
-    .employee-popup {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        height: 100vh;
-
-        .input-title {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .input-title > span {
-            color: red;
-        }
-
-        input[type='text'],
-        input[type='date'] {
-            width: 100%;
-            padding-left: 20px;
-        }
-
-        .input-swaper:nth-child(1) {
-            margin-right: 10px;
-        }
-
-        /*-------- Popup Title--------*/
-
-        .popup__title {
-            padding: 0 24px;
-            text-transform: uppercase;
-            font-size: 24px;
-            margin: 20px 0;
-        }
-
-        /*-------- Popup CSS Main--------*/
-        .popup__content {
-            background-color: #fff;
-            width: 730px;
-            border-radius: 5px;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            overflow: hidden;
-            /*-------- Popup top CSS --------*/
-            &-top {
-                padding: 0 24px;
-                .customer-avt {
-                    text-align: center;
-                    > div {
-                        margin: 0 auto;
-                        background-image: url('../../assets/img/default-avatar.jpg');
-                        background-size: contain;
-                        width: 200px;
-                        height: 200px;
-                        border-radius: 50%;
-                        border: 1px solid #e5e5e5;
-                        // margin-bottom: 10px;
-                    }
-                    > p {
-                        margin-top: 10px;
-                    }
-                }
-                .flex-2 > div {
-                    margin-bottom: 20px;
-                }
-                .input-gender {
-                    // Overide .input css of common file
-                    .input {
-                        margin: 0;
-                    }
-                    .radio-swapper {
-                        $hw: 40px;
-                        height: $hw;
-                        line-height: $hw;
-                        input:nth-child(1) {
-                            margin-left: 5px;
-                        }
-                    }
-                }
-            }
-
-            /*-------- Popup middle CSS --------*/
-            &-middle {
-                padding: 0 24px;
-                > div {
-                    margin-bottom: 20px;
-                    > div:nth-child(1) {
-                        margin-right: 10px;
-                    }
-                }
-            }
-            /*-------- Popup bottom CSS --------*/
-            &-bottom {
-                background-color: #e5e5e5;
-                height: 60px;
-                align-items: center;
-                padding: 0 25px;
-            }
-        }
-
-        /*-------- Button CSS --------*/
-        #save-btn {
-            height: 40px;
-            padding: 8px 16px;
-            border-radius: 4px;
-            align-items: center;
-            background-color: $green;
-            color: white;
-            > span {
-                margin-right: 5px;
-            }
-        }
-
-        #cancel-btn,
-        #delete-btn {
-            height: 40px;
-            line-height: 40px;
-            padding: 0 20px;
-            margin-left: auto;
-            margin-right: 16px;
-        }
-        #cancel-btn:hover {
-            background-color: #bbb;
-        }
-
-        #delete-btn {
-            background-color: #f65454;
-            margin-left: 0;
-            color: #fff;
-            display: none;
-        }
-
-        #close-btn {
-            $hw: 30px;
-            height: $hw;
-            width: $hw;
-            line-height: $hw;
-            text-align: center;
-            font-size: 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        #close-btn:hover {
-            background-color: #e5e5e5;
-        }
-
-        /*-------- Select tag CSS --------*/
-        #customerType {
-            width: 100%;
-            height: 40px;
-            border: 1px solid #bbb;
-            border-radius: 5px;
-            padding-left: 20px;
-        }
-    }
-
-    .employee-popup.active {
-        display: block;
-    }
-
-    label {
-        display: flex;
-        align-items: center;
-    }
-
-    .circle {
-        width: 20px;
-        height: 20px;
-        border: 1px solid #bbb;
-        display: inline-block;
-        border-radius: 50%;
-        position: relative;
-    }
-
-    input:checked + .circle {
-        border-color: #019160;
-    }
-
-    input:checked + .circle::after {
-        content: '';
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #019160;
-        position: absolute;
-        right: 50%;
-        top: 50%;
-        transform: translate(50%, -50%);
-    }
-
-    .value-error {
-        border-color: red;
-    }
+    @import '../../style/layout/EmployeePopUpAdd';
 </style>

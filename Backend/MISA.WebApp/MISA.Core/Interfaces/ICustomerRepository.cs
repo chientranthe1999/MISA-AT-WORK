@@ -10,7 +10,7 @@ namespace MISA.Core.Interfaces
     public interface ICustomerRepository : IBaseRepository<Customer>
     {
         /// <summary>
-        /// Hàm check trùng mã code khách hàng
+        /// Hàm tìm khách hàng theo mã khách hàng
         /// </summary>
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns>

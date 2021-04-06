@@ -54,14 +54,17 @@ namespace MISA.WebApp.Controllers
             else return BadRequest(res);
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, [FromBody] string value)
+        //{
+        //}
 
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
+            var res = _baseService.Delete(id);
+            if (res.MisaCode == MISACode.SUCCESS) return Ok(res);
+            else return StatusCode(204, res);
         }
 
         #endregion

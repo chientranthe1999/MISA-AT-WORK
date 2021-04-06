@@ -12,7 +12,7 @@
 
         data() {
             return {
-                keyID: Date.now().toString(),
+                keyID: Date.now().toString() + this.value,
             };
         },
 

@@ -31,6 +31,21 @@ namespace MISA.WebApp
         {
 
             services.AddControllers();
+
+            // Don't auto format Json to cammel-case
+            services.AddControllers().AddJsonOptions(options =>
+               options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+            // Cors 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                    });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MISA.WebApp", Version = "v1" });
@@ -42,7 +57,7 @@ namespace MISA.WebApp
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +73,8 @@ namespace MISA.WebApp
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

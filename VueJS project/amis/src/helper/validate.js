@@ -13,3 +13,5 @@ const validateEmpty = (value) => {
     if (value == '' || value == undefined) return false;
     else return true;
 };
+
+export { validateEmailFormat, validateEmpty }

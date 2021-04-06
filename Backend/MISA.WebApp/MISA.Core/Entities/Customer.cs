@@ -46,7 +46,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Khóa ngoại (FK) - Nhóm khách hàng
         /// </summary>
-        public string CustomerGroupId { get; set; }
+        public Guid? CustomerGroupId { get; set; }
 
         /// <summary>
         /// SĐT

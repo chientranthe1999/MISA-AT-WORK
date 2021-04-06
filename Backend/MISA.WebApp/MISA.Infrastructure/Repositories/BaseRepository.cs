@@ -15,7 +15,7 @@ namespace MISA.Infrastructure.Repositories
         #region DECLARE
         string _connectionString = "User Id=dev;" +
             "Password=12345678;" +
-            "Database = MF0_NVManh_CukCuk02;" +
+            "Database = MF776_TTChien_CukCuk;" +
             "Host=47.241.69.179;" +
             "Character Set = utf8";
 
@@ -36,7 +36,6 @@ namespace MISA.Infrastructure.Repositories
         public IEnumerable<T> Get()
         {
             var res = _dbConnection.Query<T>($"Proc_Get{_tableName}s", commandType: CommandType.StoredProcedure);
-            //var res = _dbConnection.Query<T>("Select * from Customer", commandType: CommandType.Text);
             return res;
         }
 
@@ -52,6 +51,7 @@ namespace MISA.Infrastructure.Repositories
         }
 
         public int Add(T t) { 
+            
             var rowAffected = _dbConnection.Execute($"Proc_Insert{_tableName}", t, commandType: CommandType.StoredProcedure);
             return rowAffected;
         }
@@ -63,7 +63,12 @@ namespace MISA.Infrastructure.Repositories
 
         public int Delete(Guid id)
         {
-            throw new NotImplementedException();
+            string _idName = _tableName + "id";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add(_idName, id);
+
+            var rowAffected = _dbConnection.Execute($"Proc_Delete{_tableName}", dynamicParameters, commandType: CommandType.StoredProcedure);
+            return rowAffected;
         }
 
         #endregion

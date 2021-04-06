@@ -115,6 +115,15 @@ namespace MISA.Core.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nhóm khách hàng không được để trống.
+        /// </summary>
+        public static string EmptyCustomerGroupId {
+            get {
+                return ResourceManager.GetString("EmptyCustomerGroupId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cập nhật dữ liệu thất bại.
         /// </summary>
         public static string UpdateError {

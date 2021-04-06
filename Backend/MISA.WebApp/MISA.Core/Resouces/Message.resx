@@ -135,6 +135,9 @@
   <data name="EmptyCustomerCode" xml:space="preserve">
     <value>Mã Khách hàng ko được để trống</value>
   </data>
+  <data name="EmptyCustomerGroupId" xml:space="preserve">
+    <value>Nhóm khách hàng không được để trống</value>
+  </data>
   <data name="UpdateError" xml:space="preserve">
     <value>Cập nhật dữ liệu thất bại</value>
   </data>

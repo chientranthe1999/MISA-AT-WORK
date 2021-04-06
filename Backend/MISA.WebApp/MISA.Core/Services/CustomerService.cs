@@ -15,7 +15,7 @@ namespace MISA.Core.Services
         #endregion
 
         #region Constructor
-        public CustomerService(ICustomerRepository customerRepository):base(customerRepository)
+        public CustomerService(ICustomerRepository customerRepository) : base(customerRepository)
         {
             _customerRepository = customerRepository;
         }
@@ -24,25 +24,36 @@ namespace MISA.Core.Services
         #region Method
         public override bool Validate(Customer t)
         {
+            
             bool isValid = true;
             var isDuplicate = _customerRepository.GetByCustomerCode(t.CustomerCode);
+            // Chuyển kiểu Guid của CustomerGroupId sang String
+            var customerGroupId = t.CustomerGroupId.ToString();
+
             _serviceResult.devMsg = String.Empty;
 
+            // Check CustomerCode không được trống
             if (String.IsNullOrEmpty(t.CustomerCode))
             {
                 _serviceResult.devMsg += Resouces.Message.EmptyCustomerCode;
                 isValid = false;
             }
 
-
-            if(isDuplicate)
+            // Check xem trường CustomerGroupId không được trống
+            if (String.IsNullOrEmpty(customerGroupId))
             {
-                _serviceResult.devMsg += Resouces.Message.DuplicateCustomerCode;
+                _serviceResult.devMsg += ", " + Resouces.Message.EmptyCustomerGroupId;
+                isValid = false;
+            }
+
+            // Check trùng mã
+            if (isDuplicate)
+            {
+                _serviceResult.devMsg += ", " + Resouces.Message.DuplicateCustomerCode;
                 isValid = false;
             }
             return isValid;
         }
-
         #endregion
     }
 }

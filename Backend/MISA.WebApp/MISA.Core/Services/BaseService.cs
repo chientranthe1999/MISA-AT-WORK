@@ -48,7 +48,21 @@ namespace MISA.Core.Services
 
         public ServiceResult Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var result = _baseRepository.Delete(id);
+            if(result == 0)
+            {
+                _serviceResult.MisaCode = MISACode.NOTVALID;
+                _serviceResult.userMsg = Resouces.Message.DeleteError;
+            }
+            else
+            {
+                _serviceResult.devMsg = Resouces.Message.DeleteSuccess;
+                _serviceResult.userMsg = Resouces.Message.DeleteSuccess;
+                _serviceResult.MisaCode = MISACode.SUCCESS;
+                _serviceResult.Data = result;
+            }
+
+            return _serviceResult;
         }
 
         public IEnumerable<T> Get()

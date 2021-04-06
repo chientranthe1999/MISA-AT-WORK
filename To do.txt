@@ -1,0 +1,9 @@
+- Validate backend (usesage attr)
+
+- Validate frontend
+
+- base frontend 
+
+- ratio get value and combo box get value
+
+- Thêm customerGroupId API

@@ -3,12 +3,7 @@
         <Sidebar />
         <div class="right-swapper">
             <Header />
-            <Content
-                :dataBinding="this.employeeList"
-                :isLoading="this.isLoading"
-                :rowTitle="this.rowTitle"
-                :reload="this.reload"
-            />
+            <Content :dataBinding="this.employeeList" :isLoading="this.isLoading" :rowTitle="this.rowTitle" :reload="this.reload" />
         </div>
         <BaseDeleteWarning />
     </div>
@@ -30,15 +25,12 @@
                 isLoading: true,
 
                 rowTitle: [
-                    { titleCode: 'EmployeeCode', title: 'Mã Nhân Viên' },
+                    { titleCode: 'CustomerCode', title: 'Mã khách hàng' },
                     { titleCode: 'FullName', title: 'Họ tên' },
-                    { titleCode: 'GenderName', title: 'Giới tính' },
+                    { titleCode: 'Gender', title: 'Giới tính' },
                     { titleCode: 'Email', title: 'Email' },
                     { titleCode: 'PhoneNumber', title: 'Số điện thoại' },
                     { titleCode: 'DateOfBirth', title: 'Ngày sinh' },
-                    { titleCode: 'DepartmentName', title: 'Bộ phận/phòng ban' },
-                    { titleCode: 'Salary', title: 'Lương' },
-                    { titleCode: 'WorkStatusName', title: 'Trạng thái' },
                     { titleCode: 'Address', title: 'Địa chỉ' },
                 ],
 
@@ -81,7 +73,7 @@
 
             getData() {
                 axios
-                    .get('http://api.manhnv.net/api/employees')
+                    .get('https://localhost:44388/api/v1/Customers')
                     .then((response) => {
                         this.employeeList = response.data;
                         this.isLoading = false;
