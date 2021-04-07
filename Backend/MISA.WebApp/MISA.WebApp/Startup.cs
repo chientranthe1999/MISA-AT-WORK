@@ -57,6 +57,9 @@ namespace MISA.WebApp
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
 
+            services.AddScoped<ICustomerGroupService, CustomerGroupService>();
+            services.AddScoped<ICustomerGroupRepository, CustomerGroupRepository>();
+
 
         }
 

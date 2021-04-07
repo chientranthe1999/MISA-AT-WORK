@@ -16,12 +16,16 @@ namespace MISA.WebApp.Controllers
     /// </summary>
     public class CustomerController : BaseEntityController<Customer>
     {
+        #region Declare
         ICustomerService _customerService;
+        #endregion
 
+        #region Constructor
         public CustomerController(ICustomerService customerService) : base(customerService)
         {
             _customerService = customerService;
         }
-      
-    } 
+        #endregion
+
+    }
 }

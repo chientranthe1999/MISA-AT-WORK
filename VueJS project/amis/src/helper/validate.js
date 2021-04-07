@@ -9,9 +9,14 @@ const validateEmailFormat = (value) => {
     return re.test(value);
 };
 
+/**
+ * Hàm check không được để trống
+ * @param {String} value Giá trị truyền vào để validate
+ * @returns
+ */
 const validateEmpty = (value) => {
     if (value == '' || value == undefined) return false;
     else return true;
 };
 
-export { validateEmailFormat, validateEmpty }
+export { validateEmailFormat, validateEmpty };

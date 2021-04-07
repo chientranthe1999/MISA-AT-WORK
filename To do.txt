@@ -6,4 +6,5 @@
 
 - ratio get value and combo box get value
 
-- Thêm customerGroupId API
+- Thêm customerGroupId API (done)
+

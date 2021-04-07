@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 
 namespace MISA.WebApp.Controllers
 {
+    /// <summary>
+    /// Base Controller 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// CreatedBy: Chiến Nobi (07/04/2021)
     [Route("api/v1/[controller]s")]
     [ApiController]
     public class BaseEntityController<T> : ControllerBase

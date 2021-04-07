@@ -51,7 +51,12 @@
         },
 
         props: {
-            selectLists: Array,
+            selectLists: {
+                type: Array,
+                default() {
+                    return [];
+                },
+            },
 
             placeholder: {
                 type: String,
@@ -137,9 +142,11 @@
              * Function to set default value when props defaultValue is empty
              */
             checkingDefaultValue() {
-                if (this.defaultValue.value == '' || this.defaultValue.value == null) {
-                    return this.selectLists[0].value;
-                } else return this.defaultValue.value;
+                if (this.selectLists.length > 0) {
+                    if (this.defaultValue.value == '' || this.defaultValue.value == null) {
+                        return this.selectLists[0].value;
+                    } else return this.defaultValue.value;
+                }
             },
         },
     };

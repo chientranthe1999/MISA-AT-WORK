@@ -28,7 +28,12 @@
                         </div>
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="">Phân loại khách hàng (<span>*</span>)</p>
-                            <BaseCombobox :selectLists="selectLists" :comboboxPadding="comboboxPadding" comboboxWidth="100%" :fontSize="fontSize" />
+                            <BaseCombobox
+                                :selectLists="selectLists"
+                                comboboxPadding="0 0 0 20px"
+                                comboboxWidth="100%"
+                                fontSize="14px"
+                            />
                         </div>
                     </div>
 
@@ -51,30 +56,39 @@
             <!-- Popup middle -->
             <div class="popup__content-middle">
                 <div class="d-flex">
-                    <div class="flex-2">
+                    <div class="flex-2 input-swaper">
                         <p class="input-title" for="email">Email (<span>*</span>)</p>
-                        <input class="input" type="text" placeholder="example@domain.com" id="email" />
+                        <input
+                            class="input"
+                            type="text"
+                            placeholder="example@domain.com"
+                            id="email"
+                            value-required
+                            @blur="validateEmail"
+                            @focus="deleteError"
+                        />
                     </div>
-                    <div class="flex-1">
+                    <div class="flex-1 input-swaper">
                         <p class="input-title" for="">Số điện thoại (<span>*</span>)</p>
                         <input class="input" type="text" placeholder="" id="phoneNumber" value-required />
                     </div>
                 </div>
                 <div class="d-flex">
-                    <div class="flex-2">
+                    <div class="flex-2 input-swaper">
                         <p class="input-title" for="">Tên Công Ty</p>
                         <input class="input" type="text" placeholder="" />
                     </div>
-                    <div class="flex-1">
+                    <div class="flex-1 input-swaper">
                         <p class="input-title" for="">Mã số thuế</p>
                         <input class="input" type="text" placeholder="Mã số thuế công ty" />
                     </div>
                 </div>
-                <div class="flex-1">
+                <div class="flex-1 input-swaper">
                     <p class="input-title" for="">Địa chỉ</p>
                     <input class="input" type="text" placeholder="Địa chỉ" />
                 </div>
             </div>
+
             <!-- Popup bottom -->
             <div class="popup__content-bottom d-flex">
                 <div id="cancel-btn" class="btn">Hủy</div>
@@ -90,6 +104,8 @@
 <script>
     import BaseCombobox from '../common/BaseCombobox';
     import BaseRatio from '../common/BaseRatio';
+    import axios from 'axios';
+    import { validateEmailFormat, validateEmpty } from '../../helper/validate';
 
     export default {
         name: 'EmployeePopupAdd',
@@ -97,16 +113,10 @@
         // data
         data() {
             return {
-                selectLists: [
-                    { key: 1, value: 'Nhóm khách hàng MISA' },
-                    { key: 2, value: 'Khách VIP' },
-                ],
-
-                comboboxPadding: '0 0 0 20px',
-
-                fontSize: '14px',
+                selectLists: [],
             };
         },
+
         // props
         props: {
             modalStatus: {
@@ -122,46 +132,82 @@
             BaseRatio,
         },
 
-        mounted() {},
-
         methods: {
+            // /**
+            //  * Kiểm tra xem trường dữ liệu có trống ko
+            //  * @param {Object} selectedDom: item
+            //  * @author: Chiến Nobi 07/04/2021
+            //  */
+            // checkEmpty(selectedDom) {
+            //     var mustRequired = selectedDom.hasAttribute('value-required');
+            //     if (selectedDom.value == '' && mustRequired) {
+            //         selectedDom.classList.add('value-error');
+            //     } else selectedDom.classList.remove('value-error');
+            // },
+
             /**
-             *
-             * @param {Object} selectedDom: element
-             * @
+             * Lấy danh sách nhóm khách hàng
              */
-            checkEmpty(selectedDom) {
-                var mustRequired = selectedDom.hasAttribute('value-required');
-                if (selectedDom.value == '' && mustRequired) {
-                    selectedDom.classList.add('value-error');
-                } else selectedDom.classList.remove('value-error');
+            async getCustomerGroup() {
+                var response = [];
+                var res = await axios.get('https://localhost:44388/api/v1/CustomerGroups');
+
+                res.data.forEach((element) => {
+                    response.push({ key: element.CustomerGroupId, value: element.CustomerGroupName });
+                });
+
+                this.selectLists = [...response];
+            },
+
+            /**
+             * Validate Email
+             */
+            validateEmail(e) {
+                var value = e.target.value;
+                var parentNode = e.target.parentNode;
+                if (validateEmailFormat(value) && validateEmpty(value)) {
+                    e.target.classList.remove('value-error');
+                    parentNode.removeChild(parentNode.lastChild);
+                } else {
+                    e.target.classList.add('value-error');
+                    var errorNode = document.createElement('div');
+                    errorNode.className = 'data-append';
+                    errorNode.innerHTML = 'Dữ liệu không được để trống';
+                    parentNode.appendChild(errorNode);
+                    console.log(errorNode);
+                }
+            },
+
+            deleteError(e) {
+                var parentNode = e.target.parentNode;
+                var errorNode = document.querySelector('.data-append');
+                if (errorNode != null) {
+                    parentNode.removeChild(errorNode);
+                }
+                console.log(errorNode);
             },
         },
 
         updated() {
             document.querySelector('#customerCode').focus();
-            if (this.modalStatus) {
-                var inputs = document.querySelectorAll('input[type="text"]');
-                inputs.forEach((item) => item.addEventListener('blur', () => this.checkEmpty(item)));
-                // inputs.forEach((item) =>
-                //     item.addEventListener('blur', () => {
-                //         var mustRequired = item.hasAttribute('value-required');
-                //         if (item.value == '' && mustRequired) {
-                //             item.classList.add('value-error');
-                //         } else item.classList.remove('value-error');
-                //     })
-                // );
-            }
+            // if (this.modalStatus) {
+            //     var inputs = document.querySelectorAll('input[type="text"]');
+            //     inputs.forEach((item) => item.addEventListener('blur', () => this.checkEmpty(item)));
+            // }
         },
-        destroyed() {
-            var inputs = document.querySelectorAll('input[type="text"]');
+        // destroyed() {
+        //     var inputs = document.querySelectorAll('input[type="text"]');
 
-            // remove event listener
-            inputs.forEach((element) => element.removeEventListener('blur', this.checkEmpty(element)));
+        //     // remove event listener
+        //     inputs.forEach((item) => item.removeEventListener('blur', () => this.checkEmpty(item)));
+        // },
+
+        created() {
+            this.getCustomerGroup();
         },
     };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     @import '../../style/layout/EmployeePopUpAdd';
 </style>
