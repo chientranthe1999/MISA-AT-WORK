@@ -33,14 +33,6 @@
                     { titleCode: 'DateOfBirth', title: 'Ngày sinh' },
                     { titleCode: 'Address', title: 'Địa chỉ' },
                 ],
-
-                selectList: [
-                    { key: 1, value: 'Mecerdes' },
-                    { key: 2, value: 'Ferari' },
-                    { key: 3, value: 'Lamborghini' },
-                    { key: 4, value: 'Xe máy' },
-                    { key: 5, value: 'Xe đạp' },
-                ],
             };
         },
         components: {
@@ -68,9 +60,8 @@
             },
 
             /**
-             * Lấy dữ liệu từ api sau đó bind vào frontend
+             * Lấy dữ liệu từ api
              */
-
             getData() {
                 axios
                     .get('https://localhost:44388/api/v1/Customers')

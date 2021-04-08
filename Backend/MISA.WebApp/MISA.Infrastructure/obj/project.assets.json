@@ -933,7 +933,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ttchien\\.nuget\\packages\\": {}
+    "C:\\Users\\trant\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -941,11 +941,11 @@
       "projectUniqueName": "D:\\MISA-AT-WORK\\Backend\\MISA.WebApp\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
       "projectName": "MISA.Infrastructure",
       "projectPath": "D:\\MISA-AT-WORK\\Backend\\MISA.WebApp\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\ttchien\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\trant\\.nuget\\packages\\",
       "outputPath": "D:\\MISA-AT-WORK\\Backend\\MISA.WebApp\\MISA.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ttchien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\trant\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -999,7 +999,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,3 +8,17 @@
 
 - Thêm customerGroupId API (done)
 
+- Hoàn thiện validate frontend 
+
+- Hoàn thiện tính năng update và xóa Backend
+
+- Tính năng xóa hàng loạt
+
+- Phân trang (backend + frontend)
+
+- Hoàn thiện tính năng update và xóa Frontend
+
+- Hoàn thiện validate backend
+
+
+
