@@ -17,8 +17,11 @@ namespace MISA.Core.Entities
         /// Tên của nhóm khách hàng
         /// </summary>
         public string CustomerGroupName { get; set; }
-        public string ParentId { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ParentId { get; set; }
         /// <summary>
         /// Mô tả chi tiết
         /// </summary>

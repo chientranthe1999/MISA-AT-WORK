@@ -3,6 +3,7 @@
  * @param {any} date bất kì dữ liệu gì
  * @author: Chiến Nobi (5/3/2021)
  */
+
 function formatDate(date) {
     try {
         let dateObject = new Date(date);
@@ -13,10 +14,10 @@ function formatDate(date) {
                 year = dateObject.getFullYear();
 
             // Adding number 0 to the day and month has one letter
-            day = day < 10 ? "0" + day : day;
-            month = month < 10 ? "0" + month : month;
-            return day + "/" + month + "/" + year;
-        } else return "";
+            day = day < 10 ? '0' + day : day;
+            month = month < 10 ? '0' + month : month;
+            return day + '/' + month + '/' + year;
+        } else return '';
     } catch (e) {
         console.log(e);
     }
@@ -31,9 +32,9 @@ function formatDate(date) {
 function formatSalary(salary) {
     try {
         if (Number.isInteger(salary)) {
-            return salary.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+            return salary.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         }
-        return "";
+        return '';
     } catch (e) {
         console.log(e);
     }

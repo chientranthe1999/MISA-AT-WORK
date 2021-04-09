@@ -3,18 +3,19 @@
         <Sidebar />
         <div class="right-swapper">
             <Header />
-            <Content :dataBinding="this.employeeList" :isLoading="this.isLoading" :rowTitle="this.rowTitle" :reload="this.reload" />
+            <Content
+                :dataBinding="this.employeeList"
+                :isLoading="this.isLoading"
+                :rowTitle="this.rowTitle"
+                :reload="this.reload"
+            />
         </div>
-        <BaseDeleteWarning />
+        <BaseSuccessMessage />
     </div>
 </template>
 
 <script>
-    import Content from '../components/layout/Content';
-    import Header from '../components/layout/Header';
-    import Sidebar from '../components/layout/Sidebar';
-    import BaseDeleteWarning from '../components/common/BaseDeleteWarning';
-    import axios from 'axios';
+    import { customerApi } from '@/api/customerApi';
 
     export default {
         name: 'Employee',
@@ -34,12 +35,6 @@
                     { titleCode: 'Address', title: 'Địa chỉ' },
                 ],
             };
-        },
-        components: {
-            Content,
-            Header,
-            Sidebar,
-            BaseDeleteWarning,
         },
 
         // Lấy dữ liệu khi component được tạo thành công (render ra DOM ảo)
@@ -63,10 +58,10 @@
              * Lấy dữ liệu từ api
              */
             getData() {
-                axios
-                    .get('https://localhost:44388/api/v1/Customers')
-                    .then((response) => {
-                        this.employeeList = response.data;
+                customerApi
+                    .getCustomers()
+                    .then((res) => {
+                        this.employeeList = res.data;
                         this.isLoading = false;
                     })
                     .catch((e) => {

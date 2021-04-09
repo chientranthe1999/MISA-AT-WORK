@@ -1,5 +1,6 @@
 <template>
     <div class="employee-popup" id="employee-popup" :class="{ active: modalStatus }">
+        <BaseLoader :isShow="isShow" />
         <div class="popup__content">
             <div id="close-btn" @click="deleteErrorWhenClose"><i class="fas fa-times"></i></div>
             <h3 class="popup__title">Thông tin khách hàng</h3>
@@ -21,30 +22,47 @@
                                 @blur="validateCustomerCode"
                                 @focus="deleteErrorWhenFocus"
                                 autocomplete="off"
-                                v-model="Customer.CustomerCode"
+                                v-model="customer.CustomerCode"
                             />
                         </div>
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="fullName">Họ và tên (<span>*</span>)</p>
-                            <input class="input" type="text" id="fullName" autocomplete="off" v-model="Customer.FullName" />
+                            <input
+                                class="input"
+                                type="text"
+                                id="fullName"
+                                autocomplete="off"
+                                v-model="customer.FullName"
+                            />
                         </div>
                     </div>
 
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="numberCode">Mã thẻ thành viên</p>
-                            <input class="input" type="text" id="numberCode" />
+                            <input class="input" type="text" id="numberCode" v-model="customer.MemberCardCode" />
                         </div>
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="">Phân loại khách hàng (<span>*</span>)</p>
-                            <BaseCombobox :selectLists="selectLists" comboboxPadding="0 0 0 20px" comboboxWidth="100%" fontSize="14px" />
+                            <BaseCombobox
+                                :selectLists="selectLists"
+                                comboboxPadding="0 0 0 20px"
+                                comboboxWidth="100%"
+                                fontSize="14px"
+                            />
                         </div>
                     </div>
 
                     <div class="flex-1 d-flex">
                         <div class="flex-1 input-swaper">
                             <p class="input-title" for="dateOfBirth">Ngày sinh</p>
-                            <input class="input" type="date" id="dateOfBirth" v-model="Customer.DateOfBirth" />
+                            <input
+                                class="input"
+                                type="date"
+                                id="dateOfBirth"
+                                ref="dateOfBirth"
+                                v-model="customer.DateOfBirth"
+                            />
                         </div>
                         <div class="flex-1 input-swaper input-gender">
                             <p class="input-title" for="">Giới tính (<span>*</span>)</p>
@@ -71,12 +89,18 @@
                             @blur="validateEmail"
                             @focus="deleteErrorWhenFocus"
                             ref="email"
-                            v-model="Customer.Email"
+                            v-model="customer.Email"
                         />
                     </div>
                     <div class="flex-1 input-swaper">
                         <p class="input-title" for="">Số điện thoại (<span>*</span>)</p>
-                        <input class="input" type="text" placeholder="" id="phoneNumber" v-model="Customer.PhoneNumber" />
+                        <input
+                            class="input"
+                            type="text"
+                            placeholder=""
+                            id="phoneNumber"
+                            v-model="customer.PhoneNumber"
+                        />
                     </div>
                 </div>
                 <div class="d-flex">
@@ -86,12 +110,17 @@
                     </div>
                     <div class="flex-1 input-swaper">
                         <p class="input-title" for="">Mã số thuế</p>
-                        <input v-model="Customer.CompanyTaxCode" class="input" type="text" placeholder="Mã số thuế công ty" />
+                        <input
+                            v-model="customer.CompanyTaxCode"
+                            class="input"
+                            type="text"
+                            placeholder="Mã số thuế công ty"
+                        />
                     </div>
                 </div>
                 <div class="flex-1 input-swaper">
                     <p class="input-title" for="">Địa chỉ</p>
-                    <input v-model="Customer.Address" class="input" type="text" placeholder="Địa chỉ" />
+                    <input v-model="customer.Address" class="input" type="text" placeholder="Địa chỉ" />
                 </div>
             </div>
 
@@ -108,8 +137,6 @@
 </template>
 
 <script>
-    import BaseCombobox from '../common/BaseCombobox';
-    import BaseRatio from '../common/BaseRatio';
     import { ErrorMessage } from '@/environment/message';
     import axios from 'axios';
     import { Validator } from '@/helper/validate';
@@ -127,20 +154,10 @@
                 // Cờ focus
                 count: 0,
 
-                // Đối tượng customer
-                Customer: {
-                    CustomerCode: '',
-                    FullName: '',
-                    DateOfBirth: '',
-                    Gender: 1,
-                    Address: '',
-                    CustomerGroupId: '3631011e-4559-4ad8-b0ad-cb989f2177da',
-                    CompanyName: '',
-                    CompanyTaxCode: '',
-                    PhoneNumber: '',
-                    Email: '',
-                    CreatedDate: '',
-                },
+                // Cờ Update, Add
+                formMode: 'add',
+                // Ẩn hiện thanh loading
+                isShow: false,
             };
         },
 
@@ -150,13 +167,12 @@
                 type: Boolean,
                 default: false,
             },
-
-            changeModalStatus: Function,
-        },
-
-        components: {
-            BaseCombobox,
-            BaseRatio,
+            customer: {
+                type: Object,
+                default() {
+                    return {};
+                },
+            },
         },
 
         methods: {
@@ -186,10 +202,6 @@
                 this.selectLists = [...response];
             },
 
-            test() {
-                console.log(this.Customer);
-            },
-
             /**
              * Validate Email
              */
@@ -214,7 +226,11 @@
                     parentNode.appendChild(errorNode);
                 }
             },
-
+            /**
+             * Validate CustomerCode
+             * Không được empty
+             * Không được phép trùng
+             */
             validateCustomerCode(e) {
                 var value = e.target.value;
                 var parentNode = e.target.parentNode;
@@ -225,17 +241,25 @@
                     // Xóa viền đỏ khi không rỗng
                     e.target.classList.remove('value-error');
 
-                    // // Kiểm tra customerCode đã tồn tại chưa
-                    // if (!Validator.validateEmailFormat(value)) {
-                    //     errorNode = this.createErrorNode(ErrorMessage.errorEmailFormat);
-                    //     parentNode.appendChild(errorNode);
-                    // }
+                    // Kiểm tra customerCode đã tồn tại chưa
+                    Validator.validateCustomerCode(value).then((res) => {
+                        if (!res) {
+                            errorNode = this.createErrorNode(ErrorMessage.duplicateCustomerCode);
+                            parentNode.appendChild(errorNode);
+                        }
+                    });
                 } else {
                     e.target.classList.add('value-error');
                     errorNode = this.createErrorNode(ErrorMessage.doNotEmpty('Mã khách hàng'));
                     parentNode.appendChild(errorNode);
                 }
             },
+
+            /**
+             * Validate số điện thoại
+             * Có 10 hoặc 11 số
+             * Không được có chữ
+             */
 
             // helper _methods
             /**
@@ -251,37 +275,42 @@
             // Xóa thông báo lỗi khi focus
             deleteErrorWhenFocus(e) {
                 var parentNode = e.target.parentNode;
-
+                e.target.classList.remove('value-error');
                 var errorNode = parentNode.querySelector('.data-append');
                 if (errorNode != null) {
                     parentNode.removeChild(errorNode);
                 }
             },
 
+            // Xóa thông báo lỗi khi đóng cửa sổ
             deleteErrorWhenClose() {
-                this.changeModalStatus();
+                this.$emit('closeModal');
+
                 var errorNodes = document.querySelectorAll('.data-append');
                 var inputs = document.querySelectorAll('input');
+                // Xóa Node thông báo lỗi
                 errorNodes.forEach((item) => {
                     item.remove();
                 });
 
+                // Xóa viền lỗi
                 inputs.forEach((item) => {
                     item.classList.remove('value-error');
                 });
             },
 
+            // Thêm mới người dùng khi nhấn Save
             async createNewCustomer() {
                 try {
-                    var body = {
-                        CustomerCode: this.Customer.CustomerCode,
-                        CustomerGroupId: this.Customer.CustomerGroupId,
-                        PhoneNumber: this.Customer.PhoneNumber,
-                        FullName: this.Customer.FullName,
-                        Email: this.Customer.Email,
-                    };
-                    var res = await axios.post('https://localhost:44388/api/v1/Customers', body);
-                    console.log(res);
+                    this.isShow = true;
+                    this.customer.CustomerGroupId = '19165ed7-212e-21c4-0428-030d4265475f';
+                    var res = await axios.post('https://localhost:44388/api/v1/Customers', this.customer);
+                    this.isShow = false;
+                    // Nếu trả về 201 thì thông báo cho người dùng thêm thành công
+                    if (res.status == 201) {
+                        this.$emit('closeModal');
+                        this.$emit('reload');
+                    }
                 } catch (error) {
                     console.log(error);
                 }
@@ -289,21 +318,15 @@
         },
 
         updated() {
-            this.firstOpen++;
-            if (this.count == 1) {
+            this.count++;
+            // Mở lần đầu tiên thì focus vào input đầu tiên
+            // Update lần đầu tiên khi gọi xong API getCustomerGroup
+            // Update lần 2 khi modal status prop thay đổi
+            if (this.count == 2) {
                 document.querySelector('#customerCode').focus();
             }
-            // if (this.modalStatus) {
-            //     var inputs = document.querySelectorAll('input[type="text"]');
-            //     inputs.forEach((item) => item.addEventListener('blur', () => this.checkEmpty(item)));
-            // }
+            console.log(this.customer.DateOfBith);
         },
-        // destroyed() {
-        //     var inputs = document.querySelectorAll('input[type="text"]');
-
-        //     // remove event listener
-        //     inputs.forEach((item) => item.removeEventListener('blur', () => this.checkEmpty(item)));
-        // },
 
         created() {
             this.getCustomerGroup();

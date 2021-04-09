@@ -19,6 +19,7 @@ namespace MISA.Core.Services
         {
             _customerRepository = customerRepository;
         }
+
         #endregion
 
         #region Method
@@ -54,6 +55,13 @@ namespace MISA.Core.Services
             }
             return isValid;
         }
+
+        public bool getCustomerByCode(string customerCode)
+        {
+            var res = _customerRepository.GetByCustomerCode(customerCode);
+            return res;
+        }
+
         #endregion
     }
 }

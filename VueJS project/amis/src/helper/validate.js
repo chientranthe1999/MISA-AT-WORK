@@ -1,3 +1,4 @@
+import { customerApi } from '../api/customerApi';
 
 const Validator = {
     /**
@@ -14,13 +15,24 @@ const Validator = {
     /**
      * Hàm check không được để trống
      * @param {String} value Giá trị truyền vào để validate
-     * @returns
+     * @returns true nếu pass validate, false nếu ko pass
      */
     validateEmpty: (value) => {
         if (value == '' || value == undefined) return false;
         else return true;
-    }
-}
+    },
 
+    /**
+     *
+     * @param {*} customerCode
+     * @returns
+     */
+
+    validateCustomerCode: async(customerCode) => {
+        var res = await customerApi.checkExistCustomerCode(customerCode);
+        if (res.data) return false;
+        else return true;
+    },
+};
 
 export { Validator };

@@ -6,7 +6,7 @@
             <h3 class="content__top-header">Quản lý lao động</h3>
             <div class="content__top-btn">
                 <div class="btn-syn btn">Đồng bộ từ HRM</div>
-                <div class="btn-add btn" @click="this.changeModalStatus">
+                <div class="btn-add btn" @click="showModal">
                     <span><i class="fas fa-user-plus"></i></span>
                     <span>Thêm lao động</span>
                 </div>
@@ -43,7 +43,21 @@
                     </tr>
                 </thead>
 
-                <tbody v-html="dataList"></tbody>
+                <tbody>
+                    <tr
+                        v-for="customer in dataBinding"
+                        :key="customer.CustomerId"
+                        @dblclick="trOnClick(customer.CustomerId)"
+                    >
+                        <td>{{ customer.CustomerCode }}</td>
+                        <td>{{ customer.FullName }}</td>
+                        <td>{{ customer.Gender }}</td>
+                        <td>{{ customer.Email }}</td>
+                        <td>{{ customer.PhoneNumber }}</td>
+                        <td>{{ formatDate(customer.DateOfBirth) }}</td>
+                        <td style="max-width: 250px;">{{ customer.Address }}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <!-- Content bottom -->
@@ -66,14 +80,21 @@
             <div class="text-right"><b>10</b> nhân viên/trang</div>
         </div>
 
-        <EmployeePopupAdd :modalStatus="this.modalStatus" :changeModalStatus="this.changeModalStatus" />
+        <EmployeePopupAdd
+            :modalStatus="modalStatus"
+            :customer="selectedCustomer"
+            @closeModal="hideModal"
+            @reload="reload"
+        />
     </div>
     <!-- End content -->
 </template>
 
 <script>
-    import { formatSalary, formatDate } from '../../helper/formatTable.js';
+    import { formatDate } from '@/helper/formatTable.js';
     import EmployeePopupAdd from '../popup/EmployeePopupAdd';
+    import { customerApi } from '@/api/customerApi';
+
     export default {
         name: 'Content',
 
@@ -81,6 +102,7 @@
             return {
                 dataList: '',
                 modalStatus: false,
+                selectedCustomer: {},
             };
         },
 
@@ -95,74 +117,38 @@
             /**
              * Các hàm helper
              */
-            formatSalary,
             formatDate,
 
             /**
-             * Hàm binding dữ liệu vào table
-             * @version: 1.0
-             * @author: Chiến Nobi (19/03/2021)
+             * Ẩn modal thêm khách hàng
              */
-            bindingDataToTable() {
-                document.getElementsByTagName('tbody').value = '';
-                var ths = document.querySelectorAll('th');
-                var fieldname,
-                    trs = '',
-                    tds = '';
-                this.dataBinding.forEach((item) => {
-                    // reset tds for new row
-                    tds = '';
-                    ths.forEach((attr) => {
-                        fieldname = attr.attributes[1].value;
-                        switch (fieldname) {
-                            case 'Address': {
-                                tds += `<td style="max-width: 150px;">${item[fieldname]}</td>`;
-                                break;
-                            }
-                            // format Date
-                            case 'DateOfBirth': {
-                                let phoneNumber = this.formatDate(item[fieldname]);
-                                tds += `<td ">${phoneNumber}</td>`;
-                                break;
-                            }
-                            // format Salary
-                            case 'Salary': {
-                                let salary = this.formatSalary(item[fieldname]);
-                                tds += `<td style="text-align: right;">${salary}</td>`;
-                                break;
-                            }
-                            default:
-                                tds += `<td>${item[fieldname]}</td>`;
-                                break;
-                        }
+            hideModal() {
+                this.modalStatus = false;
+                this.selectedCustomer = {};
+            },
+
+            /**
+             * Hiển thị modal Thêm khách hàng
+             */
+            showModal() {
+                this.modalStatus = true;
+            },
+
+            /**
+             * Khi click vào tr -> Hiển thị thông tin chi tiết khách hàng
+             */
+            trOnClick(customerId) {
+                customerApi
+                    .getCustomerById(customerId)
+                    .then((res) => {
+                        this.selectedCustomer = res.data;
+                        this.showModal();
+                    })
+                    .catch((e) => {
+                        console.log(e);
                     });
-                    trs += `<tr>${tds}</tr>`;
-                });
-                this.dataList = trs;
-            },
-
-            /**
-             * Hàm chuyển trạng thái của Modal
-             */
-            changeModalStatus() {
-                this.modalStatus = !this.modalStatus;
             },
         },
-
-        // Run when props changed
-        updated() {
-            /**
-             * Gán dữ liệu vào front end
-             * Khi đang load dữ liệu thì bảng phải rỗng -> dataList = ""
-             * Sau khi load xong dữ liệu từ API thì gọi hàm gán dữ liệu vào bảng
-             */
-            if (!this.isLoading) {
-                this.bindingDataToTable();
-            } else {
-                this.dataList = '';
-            }
-        },
-
         components: {
             EmployeePopupAdd,
         },

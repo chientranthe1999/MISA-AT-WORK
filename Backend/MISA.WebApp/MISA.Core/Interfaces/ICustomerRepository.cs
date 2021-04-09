@@ -14,8 +14,7 @@ namespace MISA.Core.Interfaces
         /// </summary>
         /// <param name="customerCode">Mã khách hàng</param>
         /// <returns>
-        /// - True nếu tìm thấy
-        /// - False nếu không tìm thấy
+        /// - Đối tượng nếu tìm thấy
         /// </returns>
         /// CreatedBy: Chiến Nobi (05/04/2021)
         public bool GetByCustomerCode(string customerCode);

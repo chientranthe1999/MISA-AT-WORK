@@ -31,6 +31,12 @@ namespace MISA.WebApp.Controllers
         #endregion
 
         #region Method
+
+        /// <summary>
+        /// Hàm lấy toàn bộ danh sách đối tượng
+        /// </summary>
+        /// <returns>Danh sách đối tượng</returns>
+        /// CreatedBy: Chiến Nobi (09/04/2021)
         [HttpGet]
         public IEnumerable<T> Get()
         {
@@ -55,7 +61,7 @@ namespace MISA.WebApp.Controllers
         public IActionResult Add([FromBody] T t)
         {
             var res = _baseService.Add(t);
-            if (res.MisaCode == MISACode.ISVALID) return Ok(res);
+            if (res.MisaCode == MISACode.ISVALID) return Created("", res);
             else return BadRequest(res);
         }
 

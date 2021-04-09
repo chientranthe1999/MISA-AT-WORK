@@ -9,5 +9,6 @@ namespace MISA.Core.Interfaces
 {
     public interface ICustomerService  : IBaseService<Customer>
     {
+        public bool getCustomerByCode(string customerCode);
     }
 }

@@ -8,7 +8,10 @@ const ErrorMessage = {
     errorEmailFormat: 'Email không đúng định dạng',
 
     // Sai định dạng số điệnt thoại
-    errorPhoneNumberFormat: 'Sai định dạng số điện thoại'
-}
+    errorPhoneNumberFormat: 'Sai định dạng số điện thoại',
+
+    // Trùng mã customer
+    duplicateCustomerCode: 'Mã khách hàng đã tồn tại',
+};
 
 export { ErrorMessage };

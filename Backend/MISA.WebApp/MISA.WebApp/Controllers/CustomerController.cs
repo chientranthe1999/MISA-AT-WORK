@@ -14,6 +14,7 @@ namespace MISA.WebApp.Controllers
     /// Api danh muc khach hang
     /// CreatedBy: Chiến Nobi (05/04/2021)
     /// </summary>
+
     public class CustomerController : BaseEntityController<Customer>
     {
         #region Declare
@@ -24,6 +25,15 @@ namespace MISA.WebApp.Controllers
         public CustomerController(ICustomerService customerService) : base(customerService)
         {
             _customerService = customerService;
+        }
+        #endregion
+
+        #region Method
+        [HttpGet("by")]
+        public IActionResult GetCustomerByCode([FromQuery] string code)
+        {
+            var res = _customerService.getCustomerByCode(code);
+            return Ok(res);
         }
         #endregion
 
